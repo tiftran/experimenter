@@ -60,7 +60,7 @@ def create_experiment_bug(experiment):
         "product": "Shield",
         "component": "Shield Study",
         "version": "unspecified",
-        "summary": "[Shield] {experiment}".format(experiment=experiment),
+        "summary": "[Experiment]: {experiment}".format(experiment=experiment),
         "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
             experiment=experiment
         ),
@@ -68,6 +68,10 @@ def create_experiment_bug(experiment):
         "cc": settings.BUGZILLA_CC_LIST,
         "type": "task",
         "priority": "P3",
+        "see_also": [get_bugzilla_id(experiment.data_science_bugzilla_url)],
+        "blocks": [get_bugzilla_id(experiment.feature_bugzilla_url)],
+        "url": experiment.experiment_url,
+        "whiteboard": experiment.STATUS_REVIEW_LABEL,
     }
 
     response_data = make_bugzilla_call(settings.BUGZILLA_CREATE_URL, bug_data)
@@ -82,6 +86,11 @@ def create_experiment_bug(experiment):
         )
 
     return response_data["id"]
+
+
+def get_bugzilla_id(experiment_url):
+    if experiment_url:
+        return int(experiment_url.split("id=")[1])
 
 
 def add_experiment_comment(experiment):

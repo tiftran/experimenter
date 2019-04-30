@@ -12,6 +12,7 @@ from experimenter.experiments.bugzilla import (
     create_experiment_bug,
     format_bug_body,
     make_bugzilla_call,
+    get_bugzilla_id,
 )
 from experimenter.experiments.tests.factories import ExperimentFactory
 from experimenter.experiments.tests.mixins import MockBugzillaMixin
@@ -34,7 +35,7 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
                 "product": "Shield",
                 "component": "Shield Study",
                 "version": "unspecified",
-                "summary": "[Shield] {experiment}".format(
+                "summary": "[Experiment]: {experiment}".format(
                     experiment=experiment
                 ),
                 "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
@@ -44,6 +45,12 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
                 "cc": settings.BUGZILLA_CC_LIST,
                 "type": "task",
                 "priority": "P3",
+                "see_also": [
+                    get_bugzilla_id(experiment.data_science_bugzilla_url)
+                ],
+                "blocks": [get_bugzilla_id(experiment.feature_bugzilla_url)],
+                "url": experiment.experiment_url,
+                "whiteboard": experiment.STATUS_REVIEW_LABEL,
             },
         )
 
@@ -63,7 +70,9 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
             "product": "Shield",
             "component": "Shield Study",
             "version": "unspecified",
-            "summary": "[Shield] {experiment}".format(experiment=experiment),
+            "summary": "[Experiment]: {experiment}".format(
+                experiment=experiment
+            ),
             "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
                 experiment=experiment
             ),
@@ -71,6 +80,12 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
             "cc": settings.BUGZILLA_CC_LIST,
             "type": "task",
             "priority": "P3",
+            "see_also": [
+                get_bugzilla_id(experiment.data_science_bugzilla_url)
+            ],
+            "blocks": [get_bugzilla_id(experiment.feature_bugzilla_url)],
+            "url": experiment.experiment_url,
+            "whiteboard": experiment.STATUS_REVIEW_LABEL,
         }
 
         self.mock_bugzilla_requests_post.assert_any_call(
