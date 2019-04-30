@@ -831,6 +831,11 @@ Value: {variant.value}
         """
     )
 
+
+    EXPERIMENTER_SOURCE_OF_TRUTH_DISCLAIMER = """
+    Experimenter is the source of truth for details and delivery. {experiment.experiment_url}. Changes to Bugzilla are not reflected in Experimenter and will not change delivery configuration.
+    """
+
     BUGZILLA_PREF_TEMPLATE = (
         """
     Experiment Type: Pref Flip Experiment
@@ -928,3 +933,4 @@ Value: {variant.value}
 {experiment.experiment_url}
         """
     )
+

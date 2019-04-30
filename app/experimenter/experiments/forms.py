@@ -23,6 +23,7 @@ from experimenter.projects.forms import (
     NameSlugFormMixin,
     UniqueNameSlugFormMixin,
 )
+from experimenter.experiments import bugzilla
 
 
 class JSONField(forms.CharField):
@@ -1004,8 +1005,14 @@ class ExperimentStatusForm(
                 experiment.experiment_url,
                 needs_attention,
             )
-            tasks.create_experiment_bug_task.delay(
+            experiment_id = tasks.create_experiment_bug_task.delay(
                 self.request.user.id, experiment.id
+            )
+
+            tasks.add_experiment_comment_task(
+                self.request.user.id,
+                experiment_id,
+                Experiment.EXPERIMENTER_SOURCE_OF_TRUTH_DISCLAIMER,
             )
 
         if (
@@ -1017,7 +1024,9 @@ class ExperimentStatusForm(
             experiment.save()
 
             tasks.add_experiment_comment_task.delay(
-                self.request.user.id, experiment.id
+                self.request.user.id,
+                experiment.id,
+                bugzilla.format_bug_body(experiment),
             )
 
         return experiment

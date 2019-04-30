@@ -71,6 +71,7 @@ def create_experiment_bug_task(user_id, experiment_id):
         )
         metrics.incr("create_experiment_bug.completed")
         logger.info("Bugzilla ticket notification sent")
+
     except bugzilla.BugzillaError as e:
         metrics.incr("create_experiment_bug.failed")
         logger.info("Bugzilla ticket creation failed")
@@ -84,7 +85,7 @@ def create_experiment_bug_task(user_id, experiment_id):
 
 @app.task
 @metrics.timer_decorator("add_experiment_comment.timing")
-def add_experiment_comment_task(user_id, experiment_id):
+def add_experiment_comment_task(user_id, experiment_id, comment):
     metrics.incr("add_experiment_comment.started")
 
     experiment = Experiment.objects.get(id=experiment_id)
@@ -96,7 +97,7 @@ def add_experiment_comment_task(user_id, experiment_id):
     logger.info("Updating Bugzilla comment")
 
     try:
-        bugzilla.add_experiment_comment(experiment)
+        bugzilla.add_experiment_comment(experiment, comment)
         logger.info("Bugzilla comment updated")
         Notification.objects.create(
             user_id=user_id,

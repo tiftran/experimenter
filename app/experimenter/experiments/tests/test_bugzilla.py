@@ -9,6 +9,7 @@ from experimenter.experiments.models import Experiment
 from experimenter.experiments.bugzilla import (
     BugzillaError,
     add_experiment_comment,
+    old_add_experiment_comment,
     create_experiment_bug,
     format_bug_body,
     make_bugzilla_call,
@@ -31,21 +32,28 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
         self.mock_bugzilla_requests_post.assert_called_with(
             settings.BUGZILLA_CREATE_URL,
             {
-                "product": "Shield",
-                "component": "Shield Study",
-                "version": "unspecified",
-                "summary": "[Shield] {experiment}".format(
-                    experiment=experiment
-                ),
-                "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
-                    experiment=experiment
-                ),
-                "assigned_to": experiment.owner.email,
-                "cc": settings.BUGZILLA_CC_LIST,
-                "type": "task",
-                "priority": "P3",
+            "product": "Shield",
+            "component": "Shield Study",
+            "version": "unspecified",
+            "summary": "[Experiment]: {experiment}".format(experiment=experiment),
+            "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
+            experiment=experiment
+            ),
+            "assigned_to": experiment.owner.email,
+            "cc": settings.BUGZILLA_CC_LIST,
+            "type": "task",
+            "priority": "P3",
+            "see_also": [self.get_bugzilla_id(experiment.data_science_bugzilla_url)],
+            "blocks": [self.get_bugzilla_id(experiment.feature_bugzilla_url)],
+            "url": experiment.experiment_url,
+            "whiteboard": experiment.STATUS_REVIEW_LABEL,
             },
         )
+
+    def get_bugzilla_id(self, experiment_url):
+        if experiment_url:
+            split_url = experiment_url.split("id=")
+            return int(split_url[1])
 
     def test_create_bugzilla_ticket_retries_with_no_assignee(self):
         experiment = ExperimentFactory.create_with_status(
@@ -63,14 +71,18 @@ class TestCreateExperimentBug(MockBugzillaMixin, TestCase):
             "product": "Shield",
             "component": "Shield Study",
             "version": "unspecified",
-            "summary": "[Shield] {experiment}".format(experiment=experiment),
+            "summary": "[Experiment]: {experiment}".format(experiment=experiment),
             "description": experiment.BUGZILLA_OVERVIEW_TEMPLATE.format(
-                experiment=experiment
+            experiment=experiment
             ),
             "assigned_to": experiment.owner.email,
             "cc": settings.BUGZILLA_CC_LIST,
             "type": "task",
             "priority": "P3",
+            "see_also": [self.get_bugzilla_id(experiment.data_science_bugzilla_url)],
+            "blocks": [self.get_bugzilla_id(experiment.feature_bugzilla_url)],
+            "url": experiment.experiment_url,
+            "whiteboard": experiment.STATUS_REVIEW_LABEL,
         }
 
         self.mock_bugzilla_requests_post.assert_any_call(
@@ -94,7 +106,7 @@ class TestAddExperimentComment(MockBugzillaMixin, TestCase):
             type=Experiment.TYPE_PREF,
         )
 
-        comment_id = add_experiment_comment(experiment)
+        comment_id = old_add_experiment_comment(experiment)
 
         self.assertEqual(comment_id, self.bugzilla_id)
 
@@ -111,7 +123,7 @@ class TestAddExperimentComment(MockBugzillaMixin, TestCase):
             type=Experiment.TYPE_ADDON,
         )
 
-        comment_id = add_experiment_comment(experiment)
+        comment_id = old_add_experiment_comment(experiment)
 
         self.assertEqual(comment_id, self.bugzilla_id)
 
