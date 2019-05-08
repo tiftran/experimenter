@@ -38,7 +38,7 @@ def format_bug_body(experiment):
             ]
         )
         bug_body = experiment.BUGZILLA_PREF_TEMPLATE.format(
-            experiment=experiment, variants=variants_body
+            experiment=experiment, variants=variants_body,
         )
 
     return bug_body
@@ -129,6 +129,30 @@ def get_bugzilla_id(bug_url):
     query = urlparse(bug_url).query
     return int(parse_qs(query)["id"][0])
 
+def format_update_body(experiment):
+    cf_tracking = "cf_tracking_firefox{}".format(
+        get_firefox_major_version(experiment.firefox_version)
+    )
+    return {"summary": "[Experiment] {experiment_name} Fx {version} {channel}".format(experiment_name=experiment, version=experiment.firefox_version, channel= experiment.firefox_channel),
+    "cf_user_story": format_bug_body(experiment),
+    "whiteboard": experiment.STATUS_SHIP_LABEL,
+    cf_tracking: "?"
+    }
+
+def update_experiment_bug(experiment):
+    body=format_update_body(experiment)
+    make_update_experiment_bug_call(settings.BUGZILLA_UPDATE_URL.format(id=experiment.bugzilla_id), body)
+
+def make_update_experiment_bug_call(url, data):
+    try:
+        response = requests.put(url, data)
+        return json.loads(response.content)
+    except requests.exceptions.RequestException as e:
+        logging.exception("Error calling Bugzilla API: {}".format(e))
+        raise BugzillaError(*e.args)
+    except json.JSONDecodeError as e:
+        logging.exception("Error parsing JSON Bugzilla response: {}".format(e))
+        raise BugzillaError(*e.args)
 
 def add_experiment_comment(experiment):
     comment_data = {"comment": format_bug_body(experiment)}

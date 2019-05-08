@@ -858,6 +858,8 @@ Value: {variant.value}
 {experiment.population}
 
     Are there specific criteria for participants?
+    Countries: {experiment.countries}
+    Locales:{experiment.locales}
 
 {experiment.client_matching}
 
@@ -897,7 +899,7 @@ Value: {variant.value}
 
     BUGZILLA_ADDON_TEMPLATE = (
         """
-    Experiment Type: Opt-Out experiment
+    Experiment Type: Add-On experiment
 
     What are the branches of the experiment:
 
@@ -908,6 +910,8 @@ Value: {variant.value}
 {experiment.population}
 
     Are there specific criteria for participants?
+    Countries: {experiment.countries}
+    Locales:{experiment.locales}
 
 {experiment.client_matching}
 

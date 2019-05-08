@@ -1487,7 +1487,6 @@ class TestExperimentStatusForm(
             bugzilla_id="12345",
         )
         self.assertEqual(experiment.normandy_slug, None)
-
         form = ExperimentStatusForm(
             request=self.request,
             data={"status": experiment.STATUS_SHIP},

@@ -36,9 +36,9 @@ class ExperimentFactory(
         lambda o: faker.text(random.randint(100, 500))
     )
     data_science_bugzilla_url = (
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=12345"
+        "https://bugzilla-dev.allizom.org/show_bug.cgi?id=1395334"
     )
-    feature_bugzilla_url = "https://bugzilla.mozilla.org/show_bug.cgi?id=12345"
+    feature_bugzilla_url = "https://bugzilla-dev.allizom.org/show_bug.cgi?id=1395334"
     related_work = "See also: https://www.example.com/myproject/"
     proposed_start_date = factory.LazyAttribute(
         lambda o: (
@@ -139,7 +139,7 @@ class ExperimentFactory(
     review_comms = False
     review_impacted_teams = False
 
-    bugzilla_id = "12345"
+    bugzilla_id = "1395335"
 
     class Meta:
         model = Experiment
