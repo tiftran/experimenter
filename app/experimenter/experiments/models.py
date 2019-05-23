@@ -16,6 +16,9 @@ from django.utils.functional import cached_property
 from experimenter.base.models import Country, Locale
 from experimenter.experiments.constants import ExperimentConstants
 
+from model_utils import FieldTracker
+from django.contrib.postgres.fields import JSONField
+
 
 class ExperimentManager(models.Manager):
 
@@ -233,6 +236,8 @@ class Experiment(ExperimentConstants, models.Model):
     review_impacted_teams = models.NullBooleanField(
         default=None, blank=True, null=True
     )
+
+    tracker = FieldTracker()
 
     objects = ExperimentManager()
 
@@ -760,6 +765,8 @@ class ExperimentChangeLog(models.Model):
         null=False,
         choices=Experiment.STATUS_CHOICES,
     )
+    old_values = JSONField(blank=True, null=True)
+    new_values = JSONField(blank=True, null=True)
     message = models.TextField(blank=True, null=True)
 
     objects = ExperimentChangeLogManager()

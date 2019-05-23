@@ -166,6 +166,7 @@ class TestChangeLogMixin(MockRequestMixin, TestCase):
 
         self.assertTrue(form.is_valid())
         experiment = form.save()
+        self.assertFalse(experiment.tracker.changed())
 
         self.assertEqual(experiment.changes.count(), 1)
 
@@ -191,7 +192,6 @@ class TestChangeLogMixin(MockRequestMixin, TestCase):
             instance=experiment,
         )
         self.assertTrue(form.is_valid())
-
         form.save()
 
         self.assertEqual(experiment.changes.count(), 2)
@@ -200,6 +200,9 @@ class TestChangeLogMixin(MockRequestMixin, TestCase):
 
         self.assertEqual(change.old_status, old_status)
         self.assertEqual(change.new_status, new_status)
+
+        self.assertEqual(change.old_values["status"], old_status)
+        self.assertEqual(change.new_values["status"], new_status)
 
 
 class TestExperimentOverviewForm(MockRequestMixin, TestCase):

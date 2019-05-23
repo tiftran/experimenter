@@ -17,6 +17,8 @@ COPY ./requirements /app/requirements
 
 RUN pip install -r requirements/default.txt --no-cache-dir --disable-pip-version-check
 
+RUN pip install django-model-utils
+
 # If any package is installed, that is incompatible by version, this command
 # will exit non-zero and print what is usually just a warning in `pip install`
 RUN pip check

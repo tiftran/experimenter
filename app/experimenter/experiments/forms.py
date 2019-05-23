@@ -67,18 +67,33 @@ class ChangeLogMixin(object):
 
     def save(self, *args, **kwargs):
         experiment = super().save(*args, **kwargs)
-
+    
         old_status = None
+        old_values = {}
+        new_values = {}
 
         latest_change = experiment.changes.latest()
         if latest_change:
             old_status = latest_change.new_status
+            
+            changes = experiment.tracker.changed()
+
+            for key, value in changes.items():
+                if value:
+                    import pdb
+                    pdb.set_trace()
+                    old_values[key]= experiment.tracker.getattr(key).previous
+                    new_values[key] = value
+            
+            
 
         ExperimentChangeLog.objects.create(
             experiment=experiment,
             changed_by=self.request.user,
             old_status=old_status,
             new_status=experiment.status,
+            old_values=old_values,
+            new_values=new_values,
             message=self.get_changelog_message(),
         )
 
