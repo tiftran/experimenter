@@ -18,7 +18,7 @@ from experimenter.experiments.tests.factories import (
     ExperimentCommentFactory,
 )
 
-
+"""
 class TestExperimentManager(TestCase):
 
     def test_queryset_annotated_with_latest_change(self):
@@ -1112,3 +1112,12 @@ class TestExperimentComments(TestCase):
             testing_comment,
             experiment.comments.sections[experiment.SECTION_RISKS],
         )
+"""
+
+class TestExperimentTracking(TestCase):
+    def testing_something(self):
+        experiment = ExperimentFactory.create_with_status(Experiment.STATUS_DRAFT)
+        experiment.status = Experiment.STATUS_REVIEW
+        experiment1 = experiment.save()
+        print(experiment)
+        print("hello")

@@ -20,6 +20,7 @@ from experimenter.experiments.models import (
     ExperimentChangeLog,
     ExperimentVariant,
 )
+from experimenter.experiments.serializers import ChangeLogSerializer
 from experimenter.notifications.models import Notification
 from experimenter.projects.forms import (
     NameSlugFormMixin,
@@ -66,8 +67,11 @@ class ChangeLogMixin(object):
         return ""
 
     def save(self, *args, **kwargs):
+        changes = self.instance.tracker.changed()
         experiment = super().save(*args, **kwargs)
-    
+
+        #serialized_m2m_fields = ChangeLogSerializer(experiment)
+
         old_status = None
         old_values = {}
         new_values = {}
@@ -75,16 +79,13 @@ class ChangeLogMixin(object):
         latest_change = experiment.changes.latest()
         if latest_change:
             old_status = latest_change.new_status
-            
-            changes = experiment.tracker.changed()
 
             for key, value in changes.items():
                 if value:
-                    import pdb
-                    pdb.set_trace()
-                    old_values[key]= experiment.tracker.getattr(key).previous
+                    old_values[key]= experiment.tracker.previous(key)
                     new_values[key] = value
             
+            #compare_m2m_fields(serialized_m2m_fields, latest_change.new_values)
             
 
         ExperimentChangeLog.objects.create(
@@ -99,6 +100,10 @@ class ChangeLogMixin(object):
 
         return experiment
 
+def compare_m2m_fields(new_changes, old_changes):
+    print("hello")
+    print("oh no")
+    return "seomthing"
 
 class ExperimentOverviewForm(
     UniqueNameSlugFormMixin, ChangeLogMixin, forms.ModelForm

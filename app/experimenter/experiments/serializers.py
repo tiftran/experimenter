@@ -47,6 +47,15 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = ("code", "name")
 
 
+class ChangeLogSerializer(serializers.ModelSerializer):
+    variants = ExperimentVariantSerializer(many=True)
+    locales = LocaleSerializer(many=True)
+    countries = CountrySerializer(many=True)
+
+    class Meta:
+        model = Experiment
+        fields = ("variants", "locales", "countries")
+
 class ExperimentSerializer(serializers.ModelSerializer):
     start_date = JSTimestampField()
     end_date = JSTimestampField()
