@@ -97,15 +97,7 @@ class ChangeLogMixin(object):
             old_values["variants"] = None
             new_values["variants"] = self.new_serialized_vals["variants"]
 
-        if experiment.archived or "archived" in self.changed_data:
-            old_status = experiment.status
-            old_values = []
-            new_values = []
-            message = "Archived Experiment"
-            if not experiment.archived:
-                message = "Unarchived Experiment"
-
-        elif self.changed_data:
+        if self.changed_data:
             message = self.get_changelog_message()
             if latest_change:
                 old_status = latest_change.new_status
@@ -1193,9 +1185,11 @@ class ExperimentStatusForm(
         return experiment
 
 
-class ExperimentArchiveForm(
-    ExperimentConstants, ChangeLogMixin, forms.ModelForm
-):
+class ExperimentArchiveForm(ExperimentConstants, forms.ModelForm):
+
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super().__init__(*args, **kwargs)
 
     archived = forms.BooleanField(required=False)
 
@@ -1221,6 +1215,17 @@ class ExperimentArchiveForm(
         experiment = super().save(*args, **kwargs)
         tasks.update_bug_resolution_task.delay(
             self.request.user.id, experiment.id
+        )
+
+        message = "Archived Experiment"
+        if not experiment.archived:
+            message = "Unarchived Experiment"
+
+        experiment.changes.create(
+            changed_by=self.request.user,
+            old_status=experiment.status,
+            new_status=experiment.status,
+            message=message,
         )
         return experiment
 
