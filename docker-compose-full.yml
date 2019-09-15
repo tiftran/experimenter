@@ -86,7 +86,7 @@ services:
       - "3000:3000"
 
   normandy_app:
-    image: normandy_app:latest
+    image: normandy_app:experimenter_shared
     command: bash -c "/app/bin/wait-for-it.sh normandy_db:5431 -- python manage.py migrate; ./bin/download_geolite2.sh; python manage.py update_actions; python manage.py update_actions; python manage.py initial_data; ./bin/runsslserver.sh 0.0.0.0:8000"
     links:
       - normandy_db
