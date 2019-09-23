@@ -28,6 +28,8 @@ RUN pip install -r requirements/default.txt --no-cache-dir --disable-pip-version
 # will exit non-zero and print what is usually just a warning in `pip install`
 RUN pip check
 
+RUN pip install django-mozilla-product-details
+
 COPY ./package.json /app/package.json
 COPY ./yarn.lock /app/yarn.lock
 RUN yarn install
@@ -36,3 +38,4 @@ COPY ./experimenter/static/ /app/experimenter/static/
 RUN yarn build
 
 COPY . /app
+

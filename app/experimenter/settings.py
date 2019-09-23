@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "experimenter.openidc",
     "experimenter.projects",
     "experimenter.normandy",
+    "product_details",
 ]
 
 MIDDLEWARE = [
