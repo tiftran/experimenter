@@ -9,6 +9,7 @@ services:
     links:
       - db
       - redis
+      - normandy_app
     volumes:
       - ./app:/app
       - static_volume:/app/experimenter/served/
@@ -36,6 +37,7 @@ services:
     links:
       - db
       - redis
+      - normandy_app
     volumes:
       - ./app:/app
     command: bash -c "/app/bin/wait-for-it.sh db:5432 -- celery -A experimenter worker -l debug"
