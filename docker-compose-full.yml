@@ -9,7 +9,6 @@ services:
     links:
       - db
       - redis
-      - normandy_app
     volumes:
       - ./app:/app
       - static_volume:/app/experimenter/served/
@@ -92,11 +91,10 @@ services:
     command: bash -c "/app/bin/wait-for-it.sh normandy_db:5431 ./bin/download_geolite2.sh; python manage.py update_actions; python manage.py update_actions; python manage.py initial_data; ./bin/runsslserver.sh 0.0.0.0:8000"
     links:
       - normandy_db
-    networks:
-      - public_nw
-      - private_nw
     environment:
       - DATABASE_URL=postgres://postgres:postgres@normandy_db/normandy
+    expose:
+      - "8000"
     ports:
       - "8000:8000"
 
@@ -106,8 +104,6 @@ services:
       POSTGRES_DB: normandy
     ports:
       - "5431:5432"
-    networks:
-      - private_nw
 
 volumes:
   db_volume:
