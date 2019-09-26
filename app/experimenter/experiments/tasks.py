@@ -157,12 +157,13 @@ def update_experiment_info():
                 logger.info(
                     "Skipping Experiment: {}. No Normandy id found".format(experiment)
                 )
-        except (IntegrityError, KeyError, normandy.NormandyError):
+        except (IntegrityError, KeyError, normandy.NormandyError) as e:
             logger.info(
                 "Failed to get Normandy Recipe. Recipe ID: {}".format(
                     experiment.normandy_id
                 )
             )
+            print(e)
     metrics.incr("update_experiment_info.completed")
 
 

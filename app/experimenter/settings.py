@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "experimenter.openidc",
     "experimenter.projects",
     "experimenter.normandy",
+    "product_details",
 ]
 
 MIDDLEWARE = [
@@ -279,7 +280,7 @@ CELERY_BROKER_URL = "redis://{host}:{port}/{db}".format(
 CELERY_BEAT_SCHEDULE = {
     "debug_task": {
         "task": "experimenter.experiments.tasks.update_experiment_info",
-        "schedule": 300,
+        "schedule": 30,
     }
 }
 

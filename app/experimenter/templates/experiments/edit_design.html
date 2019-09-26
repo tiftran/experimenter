@@ -39,12 +39,6 @@
     <div class="form-group row">
       <h4 class="col-9 offset-3">Firefox Add-On</h4>
     </div>
-
-    {% include "experiments/field_inline.html" with field=form.addon_experiment_id %}
-
-    {% include "experiments/field_inline.html" with field=form.addon_release_url %}
-
-    <hr class="heavy-line my-5"/>
   {% endif %}
 
   <div id="formset" data-formset-prefix="{{ form.variants_formset.prefix }}">

@@ -22,7 +22,9 @@ class NormandyDecodeError(NormandyError):
 
 def make_normandy_call(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, verify=False)
+        print("printing response....")
+        print(response)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.HTTPError as e:
@@ -40,7 +42,10 @@ def make_normandy_call(url):
 
 def get_recipe(recipe_id):
     recipe_url = settings.NORMANDY_API_RECIPE_URL.format(id=recipe_id)
+    logging.info("PRINTING OMG PLEASE")
+    logging.info(recipe_url)
     recipe_data = make_normandy_call(recipe_url)
+    print(recipe_data)
     return recipe_data["approved_revision"]
 
 

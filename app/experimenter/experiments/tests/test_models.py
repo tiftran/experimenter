@@ -1222,3 +1222,10 @@ class TestExperimentComments(TestCase):
         self.assertNotIn(
             testing_comment, experiment.comments.sections[experiment.SECTION_RISKS]
         )
+class TestMeh(TestCase):
+    def test_me(self):
+        import pdb; pdb.set_trace()
+        from product_details import product_details
+        print("print_some random stuff")
+        
+
