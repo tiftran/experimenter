@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aeadbd5b-c1be-4f40-93d0-d061c5098b97" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../manage.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type.coverage" NAME="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type Coverage Results" MODIFIED="1554160817660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json.coverage" NAME="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json Coverage Results" MODIFIED="1554160805552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms_TestJSONField_test_jsonfield_rejects_invalid_json.coverage" NAME="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_rejects_invalid_json Coverage Results" MODIFIED="1553876662643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms.coverage" NAME="Test: experiments.tests.test_forms Coverage Results" MODIFIED="1553877041201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms_TestExperimentVariantsFormSet_test_formset_invalid_if_duplicate_names_appear.coverage" NAME="Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear Coverage Results" MODIFIED="1553877086271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/249573928/importlib/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1875">
+              <caret line="126" selection-start-line="126" selection-end-line="126" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/apps/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1665">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/apps/registry.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/utils/autoreload.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3195">
+              <caret line="224" selection-start-line="224" selection-end-line="224" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/management/commands/runserver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1440">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/bin/django-admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/experiments/bugzilla.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="96" selection-start-line="96" selection-end-line="96" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/1170049292/django/core/management/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5460">
+              <caret line="380" column="19" selection-start-line="380" selection-start-column="12" selection-end-line="380" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/management/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5460">
+              <caret line="380" selection-start-line="380" selection-end-line="380" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/mail/message.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>email</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/experiments/tests/test_forms.py" />
+        <option value="$PROJECT_DIR$/experiments/email.py" />
+        <option value="$PROJECT_DIR$/experiments/bugzilla.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="180" />
+    <option name="y" value="124" />
+    <option name="width" value="1080" />
+    <option name="height" value="611" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.experimenter">
+    <configuration name="Test: experiments.tests.test_forms" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="experiments.tests.test_forms" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="django-admin" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="/usr/local/bin" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="/usr/local/bin/django-admin.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="experimenter" type="Python.DjangoServer" factoryName="Django server">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="false" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="true" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="python manage.py runserver --noreload" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.experimenter" />
+      <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" />
+      <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+      <item itemvalue="Django tests.Test: experiments.tests.test_forms" />
+      <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" />
+      <item itemvalue="Python.django-admin" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.django-admin" />
+        <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" />
+        <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+        <item itemvalue="Django tests.Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" />
+        <item itemvalue="Django tests.Test: experiments.tests.test_forms" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aeadbd5b-c1be-4f40-93d0-d061c5098b97" name="Default Changelist" comment="" />
+      <created>1553874980214</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553874980214</updated>
+      <workItem from="1553874981697" duration="77000" />
+      <workItem from="1553875208997" duration="79000" />
+      <workItem from="1553875320685" duration="2861000" />
+      <workItem from="1553878997348" duration="90000" />
+      <workItem from="1554160638777" duration="108000" />
+      <workItem from="1554160764406" duration="478000" />
+      <workItem from="1554847287140" duration="36000" />
+      <workItem from="1556729377673" duration="18000" />
+      <workItem from="1556729423351" duration="137000" />
+      <workItem from="1556729605822" duration="674000" />
+      <workItem from="1556730698802" duration="473000" />
+      <workItem from="1556744788413" duration="94000" />
+      <workItem from="1557335093847" duration="396000" />
+      <workItem from="1558053592191" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Test__experiments_tests_test_forms - 2019.03.29 at 09h 30m 08s.xml">
+      <configuration name="Test: experiments.tests.test_forms" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms - 2019.03.29 at 09h 30m 41s.xml">
+      <configuration name="Test: experiments.tests.test_forms" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestExperimentVariantsFormSet_test_formset_invalid_if_duplicate_names_appear - 2019.03.29 at 09h 31m 20s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestExperimentVariantsFormSet_test_formset_invalid_if_duplicate_names_appear - 2019.03.29 at 09h 31m 26s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsFormSet.test_formset_invalid_if_duplicate_names_appear" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.03.29 at 10h 03m 45s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.04.01 at 16h 19m 46s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.04.01 at 16h 20m 05s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.04.01 at 16h 20m 17s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.05.01 at 09h 50m 40s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experiments_tests_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.05.01 at 09h 53m 38s.xml">
+      <configuration name="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5525000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="180" y="124" width="1080" height="611" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30828518" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.59816754" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3977505" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.24539877" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/tests/test_forms.py</url>
+          <line>396</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/tests/test_forms.py</url>
+          <line>1158</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/tests/test_forms.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/experimenter_email.py</url>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/tests/test_forms.py</url>
+          <line>1002</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/249573928/importlib/__init__.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/249573928/importlib/__init__.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/experimenter$Test__experiments_tests_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type.coverage" NAME="Test: experiments.tests.test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type Coverage Results" MODIFIED="1556729615794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/experimenter$django_admin.coverage" NAME="django-admin Coverage Results" MODIFIED="1556730602392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/usr/local/bin" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:///usr/local/Cellar/python/3.6.5_1/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#2731#2750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/tests/test_forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14940">
+          <caret line="996" column="17" selection-start-line="996" selection-start-column="17" selection-end-line="996" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_saved_modules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/mail/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/experimenter_email.py" />
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/249573928/importlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/apps/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/apps/registry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/utils/autoreload.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3195">
+          <caret line="224" selection-start-line="224" selection-end-line="224" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/management/commands/runserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/bin/django-admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/1170049292/django/core/management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5460">
+          <caret line="380" column="19" selection-start-line="380" selection-start-column="12" selection-end-line="380" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5460">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/django/core/mail/message.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/bugzilla.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

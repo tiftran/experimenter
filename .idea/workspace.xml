@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3efbb1d4-a261-4569-b252-adccd77f4b1f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/experimenter/static/js/designForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/experimenter/static/js/designForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/normandy/normandy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/normandy/normandy/settings.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/experimenter$Unittests_for_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type.coverage" NAME="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type Coverage Results" MODIFIED="1554160206081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/experimenter/experiments/tests" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/bugzilla.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/experimenter/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3975">
+              <caret line="268" column="1" selection-start-line="268" selection-start-column="1" selection-end-line="268" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_bugzilla.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1995">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.6/site-packages/django/core/mail/message.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1335">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nginx/nginx.conf">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>study</find>
+      <find>studies</find>
+      <find>ExperimentVariant</find>
+      <find>st</find>
+      <find>#</find>
+      <find>view_saves</find>
+      <find>public_</find>
+      <find>public</find>
+      <find>Describe the Firefox population that will receive this experimen</find>
+      <find>logger</find>
+      <find>make</find>
+      <find>logging</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/tests/test_models.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/tests/test_views.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/tests/test_forms.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/models.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/forms.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/constants.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/email.py" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/manage.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/settings.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/bugzilla.py" />
+        <option value="$PROJECT_DIR$/app/experimenter/experiments/tests/test_bugzilla.py" />
+        <option value="$PROJECT_DIR$/app/Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="1810" />
+    <option name="y" value="90" />
+    <option name="width" value="1456" />
+    <option name="height" value="990" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="requirements" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="experimenter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="experimenter" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django tests.Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json">
+    <configuration name="Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/manage.py" />
+      <option name="PARAMETERS" value="migrate" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="experimenter/settings.py" />
+      </envs>
+      <option name="SDK_HOME" value="docker-compose://[$PROJECT_DIR$/docker-compose.yml]:app/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="7001" />
+      <option name="host" value="0.0.0.0" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="imageTag" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="app/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="nginx/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="imageTag" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="nginx/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="experimenter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/experimenter/experiments/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.Unnamed" />
+      <item itemvalue="Django tests.Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+      <item itemvalue="Docker.app/Dockerfile" />
+      <item itemvalue="Docker.nginx/Dockerfile" />
+      <item itemvalue="Python.manage" />
+      <item itemvalue="Python tests.Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" />
+        <item itemvalue="Docker.nginx/Dockerfile" />
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Docker.app/Dockerfile" />
+        <item itemvalue="Python tests.Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3efbb1d4-a261-4569-b252-adccd77f4b1f" name="Default Changelist" comment="" />
+      <created>1553622624131</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553622624131</updated>
+      <workItem from="1553622626528" duration="1977000" />
+      <workItem from="1553815567722" duration="249000" />
+      <workItem from="1553874702202" duration="272000" />
+      <workItem from="1553875293040" duration="12000" />
+      <workItem from="1553875316020" duration="3000" />
+      <workItem from="1553875337650" duration="167000" />
+      <workItem from="1553879489992" duration="3949000" />
+      <workItem from="1554159898690" duration="458000" />
+      <workItem from="1554160379922" duration="175000" />
+      <workItem from="1554160558431" duration="190000" />
+      <workItem from="1554160751681" duration="9000" />
+      <workItem from="1554161578753" duration="107000" />
+      <workItem from="1554845818504" duration="1333000" />
+      <workItem from="1554847426612" duration="37000" />
+      <workItem from="1554847486866" duration="122000" />
+      <workItem from="1554847874223" duration="1404000" />
+      <workItem from="1556728831288" duration="281000" />
+      <workItem from="1556730687512" duration="8000" />
+      <workItem from="1556731645475" duration="808000" />
+      <workItem from="1557338631893" duration="797000" />
+      <workItem from="1557428733519" duration="783000" />
+      <workItem from="1558053589908" duration="402000" />
+      <workItem from="1569866082924" duration="858000" />
+      <workItem from="1571686576352" duration="49000" />
+      <workItem from="1571688047904" duration="168000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.04.01 at 16h 05m 46s.xml">
+      <configuration name="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.04.01 at 16h 06m 36s.xml">
+      <configuration name="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.04.01 at 16h 07m 33s.xml">
+      <configuration name="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_forms_TestExperimentVariantsPrefForm_test_form_is_invalid_if_pref_value_do_not_match_pref_type - 2019.04.01 at 16h 10m 06s.xml">
+      <configuration name="Unittests for test_forms.TestExperimentVariantsPrefForm.test_form_is_invalid_if_pref_value_do_not_match_pref_type" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Test__experimenter_experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.09.30 at 11h 08m 12s.xml">
+      <configuration name="Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experimenter_experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.10.21 at 12h 36m 20s.xml">
+      <configuration name="Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__experimenter_experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json - 2019.10.21 at 13h 00m 51s.xml">
+      <configuration name="Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="14618000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1810" y="90" width="1456" height="990" extended-state="1" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18882602" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4978701" weight="0.32878152" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9150882" weight="0.9309577" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49967343" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.041608877" />
+      <window_info anchor="bottom" id="Docker" order="7" weight="0.22884881" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50160515" side_tool="true" weight="0.57281554" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49839488" visible="true" weight="0.32628062" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919742" weight="0.32871014" />
+      <window_info anchor="bottom" id="manage.py@experimenter" order="13" weight="0.32907802" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_forms.py</url>
+          <line>994</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/experimenter$manage.coverage" NAME="manage Coverage Results" MODIFIED="1554848719995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/experimenter$Test__experimenter_experiments_tests_test_forms_TestJSONField_test_jsonfield_accepts_valid_json.coverage" NAME="Test: experimenter.experiments.tests.test_forms.TestJSONField.test_jsonfield_accepts_valid_json Coverage Results" MODIFIED="1571688051196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4143">
+          <caret line="809" column="59" lean-forward="true" selection-start-line="809" selection-start-column="59" selection-end-line="809" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/base/context_processors.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/web_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/api_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/base/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4950">
+          <caret line="343" column="9" selection-start-line="343" selection-start-column="9" selection-end-line="343" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/migrations/0039_auto_20190327_1816.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8535">
+          <caret line="596" column="48" selection-start-line="596" selection-start-column="48" selection-end-line="596" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/email.py" />
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="110" column="28" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/site-packages/decouple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2895">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose-test.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bin/wait-for-it.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/site-packages/django/core/management/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5460">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/remote_sources/374035755/1170049292/watchdog/events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="539" column="6" selection-start-line="539" selection-start-column="6" selection-end-line="539" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose-gunicorn.yml" />
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/bugzilla.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3975">
+          <caret line="268" column="1" selection-start-line="268" selection-start-column="1" selection-end-line="268" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_bugzilla.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1995">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/site-packages/django/core/mail/message.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nginx/nginx.conf">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/experimenter/experiments/tests/test_forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
