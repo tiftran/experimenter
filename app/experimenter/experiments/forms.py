@@ -17,7 +17,7 @@ from experimenter.base.models import Country, Locale
 from experimenter.experiments.constants import ExperimentConstants
 from experimenter.experiments import tasks
 from experimenter.experiments.bugzilla import get_bugzilla_id
-from experimenter.experiments.changelog_utils import generate_changed_values
+from experimenter.experiments.changelog_utils import (generate_changed_values, generate_change_log,)
 from experimenter.experiments.models import (
     Experiment,
     ExperimentComment,
@@ -65,6 +65,8 @@ class ChangeLogMixin(object):
         super().__init__(*args, **kwargs)
         if self.instance.id:
             self.old_serialized_vals = ChangeLogSerializer(self.instance).data
+        else:
+            self.old_serialized_vals = None
 
     def get_changelog_message(self):
         return ""
@@ -72,7 +74,13 @@ class ChangeLogMixin(object):
     def save(self, *args, **kwargs):
 
         experiment = super().save(*args, **kwargs)
+        new_serialized_vals = ChangeLogSerializer(self.instance).data
+        message = self.get_changelog_message()
+        generate_change_log(self.old_serialized_vals,new_serialized_vals, experiment, self.changed_data,self.request.user, message, self.fields)
+        return experiment
 
+
+        """
         self.new_serialized_vals = ChangeLogSerializer(self.instance).data
         latest_change = experiment.changes.latest()
         old_status = latest_change.new_status if latest_change else None
@@ -111,6 +119,7 @@ class ChangeLogMixin(object):
             or self.get_changelog_message()
             or old_status != experiment.status
         )
+    """
 
 
 class ExperimentOverviewForm(ChangeLogMixin, forms.ModelForm):

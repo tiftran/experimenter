@@ -11,8 +11,7 @@ from experimenter.experiments.models import (
     ExperimentVariant,
     ExperimentChangeLog,
 )
-from experimenter.experiments.changelog_utils import generate_changed_values
-
+from experimenter.experiments.changelog_utils import generate_change_log
 
 class JSTimestampField(serializers.Field):
     """
@@ -600,10 +599,14 @@ class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
             ExperimentVariant.objects.filter(id__in=removed_ids).delete()
 
         new_serialized_vals = ChangeLogSerializer(instance).data
-
-        changed_values = generate_changed_values(
-            old_serialized_vals, new_serialized_vals, changed_log, changed_data
-        )
+        user = self.context["request"].user
+        generate_change_log(old_serialized_vals, new_serialized_vals, instance, changed_data,user)
+        #changed_values = generate_changed_values(
+        #    old_serialized_vals, new_serialized_vals, changed_log, changed_data
+        #)
+        return instance
+        """
+        changed_values = {}
 
         if changed_values:
             ExperimentChangeLog.objects.create(
@@ -614,6 +617,8 @@ class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
                 changed_values=changed_values,
             )
         return instance
+        """
+        
 
 
 class ExperimentChangelogVariantSerializer(serializers.ModelSerializer):
