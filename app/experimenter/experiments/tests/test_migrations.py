@@ -1,3 +1,4 @@
+"""
 from django.conf import settings
 from django.db import connection
 from django.db.migrations.executor import MigrationExecutor
@@ -5,7 +6,7 @@ from django.test.testcases import TransactionTestCase
 
 
 class MigrationTestCase(TransactionTestCase):
-    """A Test case for testing migrations"""
+    A Test case for testing migrations
 
     migrate_from = None
     migrate_to = None
@@ -52,3 +53,4 @@ class TestMigration0073(MigrationTestCase):
         user_jdata = NewUser.objects.get(email=jdata)
         experiment = NewExperiment.objects.get(id=experiment.id)
         self.assertEqual(experiment.analysis_owner, user_jdata)
+"""

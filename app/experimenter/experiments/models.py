@@ -9,6 +9,7 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
+from django.core.exceptions import ValidationError
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.db.models import Case, Max, Value, When
@@ -655,7 +656,7 @@ class Experiment(ExperimentConstants, models.Model):
         )
 
     @property
-    def is_multi_pref(self):
+    def is_multi_pref_experiment(self):
         return (
             self.is_pref_experiment
             and self.firefox_min_version_integer
@@ -803,6 +804,56 @@ class ExperimentVariant(models.Model):
     def json_dumps_value(self):
         return json.dumps(json.loads(self.value), indent=2)
 
+class VariantPreferences(models.Model):
+    variant = models.ForeignKey(
+        ExperimentVariant,
+        blank=False,
+        null=False,
+        related_name="preferences",
+        on_delete=models.CASCADE,
+    )
+    pref_name = models.CharField(max_length=255, blank=False, null=False)
+    pref_type = models.CharField(
+        max_length=255,
+        choices=ExperimentConstants.PREF_TYPE_CHOICES,
+        blank=True,
+        null=True,
+    )
+    pref_branch = models.CharField(
+        max_length=255,
+        choices=ExperimentConstants.PREF_BRANCH_CHOICES,
+        blank=True,
+        null=True,
+    )
+
+    pref_value = models.CharField(max_length=255, blank=False, null=False)
+
+    class Meta:
+        unique_together = (("pref_name", "variant"),)
+    
+    def clean(self):
+        super(VariantPreferences, self).clean()
+        expected_type_mapping = expected_type = {
+            Experiment.PREF_TYPE_BOOL: bool,
+            Experiment.PREF_TYPE_INT: int,
+            Experiment.PREF_TYPE_STR: str,
+        }
+        expected_type = expected_type_mapping.get(self.pref_type, None)
+        if self.pref_type != Experiment.PREF_TYPE_STR:
+            try:
+                found_type = type(json.loads(self.pref_value))
+
+                # type validation only for non json type
+                if expected_type and found_type != expected_type:
+                    raise ValueError
+
+            except (json.JSONDecodeError, ValueError):
+                raise ValidationError(
+                    "value", f"Unexpected value type (should be {self.pref_type})"
+                )
+    def save(self):
+        self.clean()
+        super().save()
 
 class ExperimentChangeLogManager(models.Manager):
 

@@ -4,16 +4,20 @@ import json
 from django.conf import settings
 from django.test import TestCase, override_settings
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+from django.db.utils import IntegrityError
 
 from experimenter.openidc.tests.factories import UserFactory
 from experimenter.experiments.models import (
     Experiment,
     ExperimentVariant,
+    VariantPreferences,
     ExperimentChangeLog,
 )
 from experimenter.experiments.serializers import ExperimentRecipeSerializer
 from experimenter.experiments.tests.factories import (
     ExperimentFactory,
+    ExperimentVariantFactory,
     ExperimentChangeLogFactory,
     ExperimentCommentFactory,
 )
@@ -1101,17 +1105,17 @@ class TestExperimentModel(TestCase):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="70.0"
         )
-        self.assertTrue(experiment.is_multi_pref)
+        self.assertTrue(experiment.is_multi_pref_experiment)
 
     def test_is_multi_pref_returns_false_for_pref_and_lower_version(self):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="66.0"
         )
-        self.assertFalse(experiment.is_multi_pref)
+        self.assertFalse(experiment.is_multi_pref_experiment)
 
     def test_is_multi_pref_returns_false_for_addon_type(self):
         experiment = ExperimentFactory(type=Experiment.TYPE_ADDON)
-        self.assertFalse(experiment.is_multi_pref)
+        self.assertFalse(experiment.is_multi_pref_experiment)
 
     def test_experiment_population_returns_correct_string(self):
         experiment = ExperimentFactory(
@@ -1216,6 +1220,64 @@ class TestExperimentModel(TestCase):
         variant.value = '{"key": "value","key1":"value1"}'
         expected_value = json.dumps({"key": "value", "key1": "value1"}, indent=2)
         self.assertEqual(variant.json_dumps_value, expected_value)
+
+class TestVariantPreferences(TestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.variant = ExperimentVariantFactory.create()
+        self.pref = VariantPreferences()
+        self.pref.variant = self.variant
+        self.pref.pref_type = Experiment.PREF_TYPE_BOOL
+        self.pref.pref_value = "true"
+        self.pref.pref_branch = Experiment.PREF_BRANCH_DEFAULT
+        self.pref.pref_name = "pref_name"
+
+    def test_mismatched_pref_type_and_value_is_invalid(self):
+        
+        with self.assertRaises(ValidationError):
+
+            self.pref.pref_value = "6"
+            self.pref.save()
+    
+    def test_unique_pref_name_constraint_is_violated(self):
+        self.pref.save()
+
+        pv2 = VariantPreferences()
+        pv2.pref_type = Experiment.PREF_TYPE_BOOL
+        pv2.pref_value = "false"
+        pv2.pref_branch = Experiment.PREF_BRANCH_DEFAULT
+        pv2.pref_name = "pref_name"
+        pv2.variant = self.variant
+
+        with self.assertRaises(IntegrityError):
+            pv2.save()
+
+    def test_valid_preference_are_associated_to_variant(self):
+        
+        self.pref.save()
+
+        pv2 = VariantPreferences()
+        pv2.pref_type = Experiment.PREF_TYPE_BOOL
+        pv2.pref_value = "false"
+        pv2.pref_branch = Experiment.PREF_BRANCH_DEFAULT
+        pv2.pref_name = "pref2_name"
+        pv2.variant = self.variant
+
+        pv2.save()
+
+        self.assertTrue(self.variant.preferences.count, 2)
+
+
+
+
+
+
+
+    
+
+
+        
 
 
 class TestExperimentChangeLog(TestCase):
