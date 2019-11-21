@@ -9,6 +9,7 @@ from experimenter.base.models import Country, Locale
 from experimenter.experiments.models import (
     Experiment,
     ExperimentVariant,
+    VariantPreferences,
     ExperimentChangeLog,
 )
 
@@ -535,8 +536,6 @@ class ExperimentDesignVariantBaseSerializer(serializers.ModelSerializer):
         fields = ["id", "description", "is_control", "name", "ratio"]
         model = ExperimentVariant
 
-class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
-    variants = ExperimentDesignBranchMultiPrefSerializer(many=True)
 
 class ExperimentDesignVariantPrefSerializer(ExperimentDesignVariantBaseSerializer):
     value = serializers.CharField()
@@ -545,16 +544,31 @@ class ExperimentDesignVariantPrefSerializer(ExperimentDesignVariantBaseSerialize
         fields = ["id", "description", "is_control", "name", "ratio", "value"]
         model = ExperimentVariant
 
-class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
-    preferences = ExperimentDesignBranchVariantPreferencesSerializer(many=True)
-
 class ExperimentDesignBranchVariantPreferencesSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
     pref_name = serializers.CharField(max_length=255)
     pref_type =  serializers.CharField(max_length=255)
     pref_branch = serializers.CharField(max_length=255)
+    pref_value = serializers.CharField(max_length=255)
 
     class Meta:
-        field = ["pref_name", "pref_type", "pref_branch"]
+        model = VariantPreferences
+        fields = ["id","pref_name", "pref_type", "pref_branch", "pref_value"]
+
+
+class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
+    preferences = ExperimentDesignBranchVariantPreferencesSerializer(many=True)
+
+    class Meta:
+        fields = ["id", "description", "is_control", "name", "ratio", "preferences"]
+        model = ExperimentVariant
+
+    def validate_preferences(self, data):
+        if len(data) != len(set([pref["pref_name"] for pref in data])):
+            raise serializers.ValidationError(["Pref name per Branch needs to be unique"])
+        return data
+
+
 
 class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
     type = serializers.CharField(
@@ -626,6 +640,32 @@ class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
             ExperimentVariant.objects.filter(id__in=removed_ids).delete()
 
         return instance
+
+
+class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
+    variants = ExperimentDesignBranchMultiPrefSerializer(many=True)
+
+    class Meta:
+        model = Experiment
+        fields = ("variants",)
+
+    def update(self, instance, validated_data):
+        variant_preferences = [(v_d,v_d.pop("preferences")) for v_d in validated_data["variants"]]
+
+        instance = super().update(instance, validated_data)
+        for variant_data, pref in variant_preferences:
+            
+            variant = ExperimentVariant.objects.get(**variant_data)
+            for preference in pref:
+                preference["variant_id"] = variant.id
+                VariantPreferences(**preference).save()
+                
+
+            
+
+        return instance
+
+        
 
 
 class ExperimentDesignPrefSerializer(ExperimentDesignBaseSerializer):

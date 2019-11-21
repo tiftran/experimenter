@@ -809,6 +809,7 @@ class ExperimentVariant(models.Model):
     def json_dumps_value(self):
         return json.dumps(json.loads(self.value), indent=2)
 
+
 class VariantPreferences(models.Model):
     variant = models.ForeignKey(
         ExperimentVariant,
@@ -834,10 +835,10 @@ class VariantPreferences(models.Model):
     pref_value = models.CharField(max_length=255, blank=False, null=False)
 
     class Meta:
-        unique_together = (("pref_name", "variant"),)
-    
+        unique_together = (("variant", "pref_name"),)
+
     def clean(self):
-        super(VariantPreferences, self).clean()
+        super().clean()
         expected_type_mapping = expected_type = {
             Experiment.PREF_TYPE_BOOL: bool,
             Experiment.PREF_TYPE_INT: int,
@@ -856,9 +857,12 @@ class VariantPreferences(models.Model):
                 raise ValidationError(
                     "value", f"Unexpected value type (should be {self.pref_type})"
                 )
+
     def save(self):
         self.clean()
+
         super().save()
+
 
 class ExperimentChangeLogManager(models.Manager):
 
