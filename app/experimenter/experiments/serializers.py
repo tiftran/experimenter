@@ -527,6 +527,8 @@ class ExperimentDesignBranchBaseSerializer(serializers.ModelSerializer):
         fields = ["id", "description", "is_control", "name", "ratio"]
         model = ExperimentVariant
 
+class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
+    variants = ExperimentDesignBranchMultiPrefSerializer(many=True)
 
 class ExperimentDesignBranchPrefSerializer(ExperimentDesignBranchBaseSerializer):
     value = serializers.CharField()
@@ -535,8 +537,16 @@ class ExperimentDesignBranchPrefSerializer(ExperimentDesignBranchBaseSerializer)
         fields = ["id", "description", "is_control", "name", "ratio", "value"]
         model = ExperimentVariant
 
-#class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
-    
+class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
+    preferences = ExperimentDesignBranchVariantPreferencesSerializer(many=True)
+
+class ExperimentDesignBranchVariantPreferencesSerializer(serializers.ModelSerializer):
+    pref_name = serializers.CharField(max_length=255)
+    pref_type =  serializers.CharField(max_length=255)
+    pref_branch = serializers.CharField(max_length=255)
+
+    class Meta:
+        field = ["pref_name", "pref_type", "pref_branch"]
 
 class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
     type = serializers.CharField(
