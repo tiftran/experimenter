@@ -1221,6 +1221,7 @@ class TestExperimentModel(TestCase):
         expected_value = json.dumps({"key": "value", "key1": "value1"}, indent=2)
         self.assertEqual(variant.json_dumps_value, expected_value)
 
+
 class TestVariantPreferences(TestCase):
 
     def setUp(self):
@@ -1234,12 +1235,12 @@ class TestVariantPreferences(TestCase):
         self.pref.pref_name = "pref_name"
 
     def test_mismatched_pref_type_and_value_is_invalid(self):
-        
+
         with self.assertRaises(ValidationError):
 
             self.pref.pref_value = "6"
             self.pref.save()
-    
+
     def test_unique_pref_name_constraint_is_violated(self):
         self.pref.save()
 
@@ -1254,7 +1255,7 @@ class TestVariantPreferences(TestCase):
             pv2.save()
 
     def test_valid_preference_are_associated_to_variant(self):
-        
+
         self.pref.save()
 
         pv2 = VariantPreferences()
@@ -1267,17 +1268,16 @@ class TestVariantPreferences(TestCase):
         pv2.save()
 
         self.assertTrue(self.variant.preferences.count, 2)
-
-
-
-
-
-
-
     
+    def test_valid_pref_is_able_to_update_itself(self):
+        self.pref.value=6
+
+        self.pref.save()
+
+        self.assertTrue(self.variant.preferences.count, 1)
 
 
-        
+
 
 
 class TestExperimentChangeLog(TestCase):

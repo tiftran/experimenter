@@ -8,7 +8,9 @@ from experimenter.experiments.api_views import (
     ExperimentCloneView,
     ExperimentDesignAddonView,
     ExperimentDesignPrefView,
+    ExperimentDesignMultiPrefView,
     ExperimentDesignGenericView,
+    ExperimentDesignMultiPrefView,
 )
 
 
@@ -43,6 +45,11 @@ urlpatterns = [
         r"^(?P<slug>[\w-]+)/design-pref",
         ExperimentDesignPrefView.as_view(),
         name="experiments-design-pref",
+    ),
+    url(
+        r"^(?P<slug>[\w-]+)/design-multi-pref",
+        ExperimentDesignMultiPrefView.as_view(),
+        name="experiments-design-multi-pref",
     ),
     url(
         r"^(?P<slug>[\w-]+)/design-generic",
