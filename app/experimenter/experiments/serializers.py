@@ -601,25 +601,8 @@ class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
         new_serialized_vals = ChangeLogSerializer(instance).data
         user = self.context["request"].user
         generate_change_log(old_serialized_vals, new_serialized_vals, instance, changed_data,user)
-        #changed_values = generate_changed_values(
-        #    old_serialized_vals, new_serialized_vals, changed_log, changed_data
-        #)
-        return instance
-        """
-        changed_values = {}
 
-        if changed_values:
-            ExperimentChangeLog.objects.create(
-                experiment=instance,
-                changed_by=self.context["request"].user,
-                old_status=instance.status,
-                new_status=instance.status,
-                changed_values=changed_values,
-            )
         return instance
-        """
-        
-
 
 class ExperimentChangelogVariantSerializer(serializers.ModelSerializer):
 
