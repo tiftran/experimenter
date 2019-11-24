@@ -16,6 +16,7 @@ from experimenter.experiments.models import (
     ExperimentChangeLog,
     ExperimentComment,
     ExperimentVariant,
+    VariantPreferences,
 )
 from experimenter.openidc.tests.factories import UserFactory
 
@@ -242,6 +243,19 @@ class ExperimentVariantFactory(BaseExperimentVariantFactory):
 
 class ExperimentControlFactory(ExperimentVariantFactory):
     is_control = True
+
+
+class VariantPreferencesFactory(factory.django.DjangoModelFactory):
+    variant = factory.SubFactory(ExperimentVariantFactory)
+    pref_name = factory.LazyAttribute(lambda o: faker.catch_phrase())
+    pref_type = "string"
+    pref_branch = factory.LazyAttribute(
+        lambda o: random.choice(Experiment.PREF_BRANCH_CHOICES[0])
+    )
+    pref_value = factory.LazyAttribute(lambda o: faker.word())
+
+    class Meta:
+        model = VariantPreferences
 
 
 class ExperimentChangeLogFactory(factory.django.DjangoModelFactory):

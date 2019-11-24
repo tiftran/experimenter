@@ -93,6 +93,8 @@ class Experiment(ExperimentConstants, models.Model):
         validators=[MaxValueValidator(ExperimentConstants.MAX_DURATION)],
     )
 
+    is_multi_pref_format = models.BooleanField(default=False)
+
     addon_experiment_id = models.CharField(
         max_length=255, unique=True, blank=True, null=True
     )
@@ -858,7 +860,7 @@ class VariantPreferences(models.Model):
                     "value", f"Unexpected value type (should be {self.pref_type})"
                 )
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.clean()
 
         super().save()

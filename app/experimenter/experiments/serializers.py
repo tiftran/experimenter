@@ -315,6 +315,12 @@ class ExperimentRecipeMultiPrefVariantSerializer(serializers.ModelSerializer):
         fields = ("preferences", "ratio", "slug")
 
     def get_preferences(self, obj):
+        if self.context["formatted"]:
+            return VariantPreferenceArgumentsSerializer(obj.preferences, many=True).data
+
+        return self.format_preferences(obj)
+
+    def format_preferences(self, obj):
         preference_values = {}
         preference_values["preferenceBranchType"] = obj.experiment.pref_branch
         preference_values["preferenceType"] = PrefTypeField().to_representation(
@@ -327,6 +333,19 @@ class ExperimentRecipeMultiPrefVariantSerializer(serializers.ModelSerializer):
 
         return preferences
 
+class VariantPreferenceArgumentsSerializer(serializers.ModelSerializer):
+    preferenceBranchType = serializers.ReadOnlyField(source="pref_branch")
+    preferenceType = PrefTypeField(source="pref_type")
+    preferenceValue = serializers.ReadOnlyField(source="pref_value")
+
+    class Meta:
+        model = VariantPreferences
+        fields = (
+            "preferenceBranchType",
+            "preferenceType",
+            "preferenceValue",
+        )
+    
 
 class ExperimentRecipePrefArgumentsSerializer(serializers.ModelSerializer):
     preferenceBranchType = serializers.ReadOnlyField(source="pref_branch")
@@ -391,8 +410,27 @@ class ExperimentRecipeMultiPrefArgumentsSerializer(
         )
 
     def get_branches(self, obj):
+        return ExperimentRecipeMultiPrefVariantSerializer(obj.variants, many=True, context={'formatted': obj.is_multi_pref_format}).data
+
+"""
+class ExperimentRecipeFormattedMultiPrefArgumentsSerializer(ExperimentRecipeBranchedArgumentsSerializer):
+    branches= serializers.SerializerMethodField()
+    experimentDocumentUrl = serializers.ReadOnlyField(source="experiment_url")
+
+        class Meta:
+        model = Experiment
+        fields = (
+            "slug",
+            "userFacingName",
+            "userFacingDescription",
+            "branches",
+            "experimentDocumentUrl",
+        )
+
+    def get_branches(self, obj):
         return ExperimentRecipeMultiPrefVariantSerializer(obj.variants, many=True).data
 
+"""
 
 class ExperimentRecipeAddonArgumentsSerializer(serializers.ModelSerializer):
     name = serializers.ReadOnlyField(source="addon_experiment_id")
@@ -422,7 +460,7 @@ class ExperimentRecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_action_name(self, obj):
-        if obj.is_multi_pref_experiment:
+        if obj.is_multi_pref_experiment or obj.is_multi_pref_format:
             return "multi-preference-experiment"
         if obj.is_pref_experiment:
             return "preference-experiment"
@@ -544,16 +582,17 @@ class ExperimentDesignVariantPrefSerializer(ExperimentDesignVariantBaseSerialize
         fields = ["id", "description", "is_control", "name", "ratio", "value"]
         model = ExperimentVariant
 
+
 class ExperimentDesignBranchVariantPreferencesSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
     pref_name = serializers.CharField(max_length=255)
-    pref_type =  serializers.CharField(max_length=255)
+    pref_type = serializers.CharField(max_length=255)
     pref_branch = serializers.CharField(max_length=255)
     pref_value = serializers.CharField(max_length=255)
 
     class Meta:
         model = VariantPreferences
-        fields = ["id","pref_name", "pref_type", "pref_branch", "pref_value"]
+        fields = ["id", "pref_name", "pref_type", "pref_branch", "pref_value"]
 
 
 class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
@@ -567,7 +606,6 @@ class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerial
         if len(data) != len(set([pref["pref_name"] for pref in data])):
             raise serializers.ValidationError(["Pref name per Branch needs to be unique"])
         return data
-
 
 
 class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
@@ -650,22 +688,19 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
         fields = ("variants",)
 
     def update(self, instance, validated_data):
-        variant_preferences = [(v_d,v_d.pop("preferences")) for v_d in validated_data["variants"]]
+        variant_preferences = [
+            (v_d, v_d.pop("preferences")) for v_d in validated_data["variants"]
+        ]
 
         instance = super().update(instance, validated_data)
         for variant_data, pref in variant_preferences:
-            
+
             variant = ExperimentVariant.objects.get(**variant_data)
             for preference in pref:
                 preference["variant_id"] = variant.id
                 VariantPreferences(**preference).save()
-                
-
-            
 
         return instance
-
-        
 
 
 class ExperimentDesignPrefSerializer(ExperimentDesignBaseSerializer):
