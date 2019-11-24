@@ -1268,16 +1268,13 @@ class TestVariantPreferences(TestCase):
         pv2.save()
 
         self.assertTrue(self.variant.preferences.count, 2)
-    
+
     def test_valid_pref_is_able_to_update_itself(self):
-        self.pref.value=6
+        self.pref.value = 6
 
         self.pref.save()
 
         self.assertTrue(self.variant.preferences.count, 1)
-
-
-
 
 
 class TestExperimentChangeLog(TestCase):
