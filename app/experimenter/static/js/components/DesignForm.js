@@ -113,6 +113,9 @@ class DesignForm extends React.PureComponent {
       case "pref":
         Form = PrefForm;
         break;
+      case "multi-pref":
+        Form = PrefForm;
+        break;
       case "addon":
         Form = AddonForm;
         break;

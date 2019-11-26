@@ -17,7 +17,8 @@ const branchesDiv = document.getElementById("react-branches-form");
 
 if (branchesDiv) {
   const slug = branchesDiv.dataset.experimentSlug;
-  const experimentType = branchesDiv.dataset.experimentType;
+  //const experimentType = branchesDiv.dataset.experimentType;
+  const experimentType = "multi-pref";
 
   ReactDOM.render(
     <DesignForm slug={slug} experimentType={experimentType} />,

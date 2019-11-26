@@ -94,7 +94,7 @@ class PrefBranchFields extends React.PureComponent {
     return (
       <DesignInput
         label={label}
-        name={`variants[${this.props.index}][${name}]`}
+        name={`pref[${this.props.index}][${name}]`}
         id={`variants-${this.props.index}-${name}`}
         value={this.props.branch.get(name)}
         onChange={value => {
