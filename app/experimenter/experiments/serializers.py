@@ -630,8 +630,7 @@ class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerial
             if pref.get("pref_type", "") == "string":
                 error_list.append({})
 
-        for entry in error_list:
-            if entry:
+            if any(error_list):
                 raise serializers.ValidationError(error_list)
 
 
@@ -717,12 +716,15 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
 
     def get_type(self, value):
         return "multi-pref"
+    
     def update(self, instance, validated_data):
         variant_preferences = [
             (v_d, v_d.pop("preferences")) for v_d in validated_data["variants"]
         ]
 
         instance = super().update(instance, validated_data)
+        existing_pref_ids = self.get_existing_preference_ids(instance)
+        submitted_pref_ids =[]
         for variant_data, pref in variant_preferences:
 
             variant = ExperimentVariant.objects.get(**variant_data)
@@ -730,7 +732,24 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
                 preference["variant_id"] = variant.id
                 VariantPreferences(**preference).save()
 
+                if preference.get("id"):
+                    submitted_pref_ids.append(preference.get("id"))
+
+        removed_ids = set(existing_pref_ids) - set(submitted_pref_ids)
+
+        if removed_ids:
+            VariantPreferences.objects.filter(id__in=removed_ids).delete()
+
         return instance
+
+    def get_existing_preference_ids(self,instance):
+        pref_ids = []
+
+        for variant in instance.variants.all():
+            pref_ids.extend([p.id for p in variant.preferences.all()])
+        return pref_ids
+
+
 
 
 class ExperimentDesignPrefSerializer(ExperimentDesignBaseSerializer):
