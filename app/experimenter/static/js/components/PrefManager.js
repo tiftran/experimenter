@@ -2,7 +2,7 @@ import { boundClass } from "autobind-decorator";
 import { fromJS, List, Map } from "immutable";
 import PropTypes from "prop-types";
 import React from "react";
-import { Row, Col, Button} from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 import Pref from "experimenter/components/Pref";
 
@@ -11,59 +11,43 @@ class PrefManager extends React.PureComponent {
   static propTypes = {
     preferences: PropTypes.instanceOf(List),
     errors: PropTypes.instanceOf(List),
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   };
 
-  handlePrefChange(index, value){
-    const{
-      preferences,
-      onChange,
-    } = this.props;
+  handlePrefChange(index, value) {
+    const { preferences, onChange } = this.props;
 
-    onChange(preferences.set(index, value))
+    onChange(preferences.set(index, value));
   }
 
-
-
   addPref() {
-    const {
-      preferences,
-      errors,
-      onChange,
-      handleErrorsChange,
-    } = this.props;
+    const { preferences, errors, onChange, handleErrorsChange } = this.props;
     onChange(preferences.push(fromJS({})));
     this.handlePrefErrorsChange(errors.push(fromJS({})));
   }
 
   removePref(index) {
-    const {
-      preferences,
-      errors,
-      onChange,
-      handleErrorsChange,
-    } = this.props;
+    const { preferences, errors, onChange, handleErrorsChange } = this.props;
     onChange(preferences.delete(index));
     handleErrorsChange(errors.delete(index));
   }
 
   renderPref(preference, index) {
-    const {  errors } = this.props;
+    const { errors } = this.props;
 
     return (
       <Pref
         key={index}
         index={index}
         preference={preference}
-        errors={errors.get(index,new Map())}
+        errors={errors.get(index, new Map())}
         remove={this.removePref}
-        onChange={(value)=>this.handlePrefChange(index, value)}
+        onChange={value => this.handlePrefChange(index, value)}
       />
     );
   }
 
   render() {
-
     const { preferences } = this.props;
 
     return (

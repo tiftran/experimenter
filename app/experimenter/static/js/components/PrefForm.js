@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {List, Map} from "immutable";
-import {Row, Col} from "react-bootstrap";
+import { List, Map } from "immutable";
+import { Row, Col } from "react-bootstrap";
 
 import BranchManager from "experimenter/components/BranchManager";
 import DesignInput from "experimenter/components/DesignInput";
@@ -23,72 +23,73 @@ export default class PrefForm extends React.PureComponent {
 
   renderSingularPrefInfo() {
     if (this.props.type === "pref") {
-      return (<div>
-        <DesignInput
-          label="Pref Name"
-          name="pref_key"
-          id="id_pref_key"
-          onChange={value => {
-            this.props.handleDataChange("pref_key", value);
-          }}
-          value={this.props.data.get("pref_key")}
-          error={this.props.errors.get("pref_key", "")}
-          helpContent={PREF_KEY_HELP}
-        />
+      return (
+        <div>
+          <DesignInput
+            label="Pref Name"
+            name="pref_key"
+            id="id_pref_key"
+            onChange={value => {
+              this.props.handleDataChange("pref_key", value);
+            }}
+            value={this.props.data.get("pref_key")}
+            error={this.props.errors.get("pref_key", "")}
+            helpContent={PREF_KEY_HELP}
+          />
 
-        <DesignInput
-          label="Pref Type"
-          name="pref_type"
-          id="id_pref_type"
-          onChange={value => {
-            this.props.handleDataChange("pref_type", value);
-          }}
-          value={this.props.data.get("pref_type")}
-          error={this.props.errors.get("pref_type", "")}
-          as="select"
-          helpContent={PREF_TYPE_HELP}
-        >
-          <option>Firefox Pref Type</option>
-          <option>boolean</option>
-          <option>integer</option>
-          <option>string</option>
-          <option>json string</option>
-        </DesignInput>
+          <DesignInput
+            label="Pref Type"
+            name="pref_type"
+            id="id_pref_type"
+            onChange={value => {
+              this.props.handleDataChange("pref_type", value);
+            }}
+            value={this.props.data.get("pref_type")}
+            error={this.props.errors.get("pref_type", "")}
+            as="select"
+            helpContent={PREF_TYPE_HELP}
+          >
+            <option>Firefox Pref Type</option>
+            <option>boolean</option>
+            <option>integer</option>
+            <option>string</option>
+            <option>json string</option>
+          </DesignInput>
 
-        <DesignInput
-          label="Pref Branch"
-          name="pref_branch"
-          id="id_pref_branch"
-          onChange={value => {
-            this.props.handleDataChange("pref_branch", value);
-          }}
-          value={this.props.data.get("pref_branch")}
-          error={this.props.errors.get("pref_branch", "")}
-          as="select"
-          helpContent={PREF_BRANCH_HELP}
-        >
-          <option>Firefox Pref Branch</option>
-          <option>default</option>
-          <option>user</option>
-        </DesignInput>
+          <DesignInput
+            label="Pref Branch"
+            name="pref_branch"
+            id="id_pref_branch"
+            onChange={value => {
+              this.props.handleDataChange("pref_branch", value);
+            }}
+            value={this.props.data.get("pref_branch")}
+            error={this.props.errors.get("pref_branch", "")}
+            as="select"
+            helpContent={PREF_BRANCH_HELP}
+          >
+            <option>Firefox Pref Branch</option>
+            <option>default</option>
+            <option>user</option>
+          </DesignInput>
 
-        <hr className="heavy-line my-5"/>
-      </div>)
+          <hr className="heavy-line my-5" />
+        </div>
+      );
     }
   }
 
   render() {
     let BranchFields;
-    if (this.props.data.type==="pref"){
-      BranchFields = PrefBranchFields
-    }
-    else{
-      BranchFields= MultiPrefBranchFields
+    if (this.props.data.type === "pref") {
+      BranchFields = PrefBranchFields;
+    } else {
+      BranchFields = MultiPrefBranchFields;
     }
     return (
       <div>
         <Row className="mb-3">
-          <Col md={{span: 4, offset: 3}}>
+          <Col md={{ span: 4, offset: 3 }}>
             <h4>Firefox Pref</h4>
           </Col>
         </Row>

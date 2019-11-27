@@ -333,6 +333,7 @@ class ExperimentRecipeMultiPrefVariantSerializer(serializers.ModelSerializer):
 
         return preferences
 
+
 class VariantPreferenceArgumentsSerializer(serializers.ModelSerializer):
     preferenceBranchType = serializers.ReadOnlyField(source="pref_branch")
     preferenceType = PrefTypeField(source="pref_type")
@@ -340,12 +341,8 @@ class VariantPreferenceArgumentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = VariantPreferences
-        fields = (
-            "preferenceBranchType",
-            "preferenceType",
-            "preferenceValue",
-        )
-    
+        fields = ("preferenceBranchType", "preferenceType", "preferenceValue")
+
 
 class ExperimentRecipePrefArgumentsSerializer(serializers.ModelSerializer):
     preferenceBranchType = serializers.ReadOnlyField(source="pref_branch")
@@ -410,7 +407,9 @@ class ExperimentRecipeMultiPrefArgumentsSerializer(
         )
 
     def get_branches(self, obj):
-        return ExperimentRecipeMultiPrefVariantSerializer(obj.variants, many=True, context={'formatted': obj.is_multi_pref_format}).data
+        return ExperimentRecipeMultiPrefVariantSerializer(
+            obj.variants, many=True, context={"formatted": obj.is_multi_pref_format}
+        ).data
 
 
 class ExperimentRecipeAddonArgumentsSerializer(serializers.ModelSerializer):
@@ -585,7 +584,9 @@ class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerial
 
     def validate_preferences(self, data):
         if not self.is_pref_valid(data):
-            error_list= [{"pref_name":"Pref name per Branch needs to be unique"}]*len(data)
+            error_list = [{"pref_name": "Pref name per Branch needs to be unique"}] * len(
+                data
+            )
             raise serializers.ValidationError(error_list)
         self.is_value_type_match(data)
         return data
@@ -603,13 +604,15 @@ class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerial
         return unique_names and all_contains_alphanumeric_and_spaces
 
     def is_value_type_match(self, preferences):
-        error_list=[]
+        error_list = []
         for pref in preferences:
             if pref.get("pref_type", "") == "integer":
                 try:
                     int(pref["pref_value"])
                 except ValueError:
-                    error_list.append({"pref_value": "The pref value must be an integer."})
+                    error_list.append(
+                        {"pref_value": "The pref value must be an integer."}
+                    )
                 else:
                     error_list.append({})
 
@@ -624,9 +627,11 @@ class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerial
                 try:
                     json.loads(pref["pref_value"])
                 except ValueError:
-                    error_list.append({"pref_value": "The pref value must be valid JSON."})
+                    error_list.append(
+                        {"pref_value": "The pref value must be valid JSON."}
+                    )
                 else:
-                    error_list.append({"pref_value": ""})
+                    error_list.append({})
             if pref.get("pref_type", "") == "string":
                 error_list.append({})
 
@@ -712,11 +717,11 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
 
     class Meta:
         model = Experiment
-        fields = ("type","variants",)
+        fields = ("type", "variants")
 
     def get_type(self, value):
         return "multi-pref"
-    
+
     def update(self, instance, validated_data):
         variant_preferences = [
             (v_d, v_d.pop("preferences")) for v_d in validated_data["variants"]
@@ -724,7 +729,7 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
 
         instance = super().update(instance, validated_data)
         existing_pref_ids = self.get_existing_preference_ids(instance)
-        submitted_pref_ids =[]
+        submitted_pref_ids = []
         for variant_data, pref in variant_preferences:
 
             variant = ExperimentVariant.objects.get(**variant_data)
@@ -742,14 +747,12 @@ class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
 
         return instance
 
-    def get_existing_preference_ids(self,instance):
+    def get_existing_preference_ids(self, instance):
         pref_ids = []
 
         for variant in instance.variants.all():
             pref_ids.extend([p.id for p in variant.preferences.all()])
         return pref_ids
-
-
 
 
 class ExperimentDesignPrefSerializer(ExperimentDesignBaseSerializer):

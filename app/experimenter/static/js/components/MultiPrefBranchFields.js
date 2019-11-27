@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {Map, List} from "immutable";
+import { Map, List } from "immutable";
 import PrefManager from "experimenter/components/PrefManager";
-import {boundClass} from "autobind-decorator";
+import { boundClass } from "autobind-decorator";
 
 import {
   BRANCH_RATIO_HELP,
@@ -20,9 +20,8 @@ class MultiPrefBranchFields extends React.PureComponent {
     onChange: PropTypes.func,
     renderField: PropTypes.func,
   };
-  handlePrefChange(value){
-    this.props.onChange("preferences",value)
-
+  handlePrefChange(value) {
+    this.props.onChange("preferences", value);
   }
 
   render() {
@@ -53,10 +52,11 @@ class MultiPrefBranchFields extends React.PureComponent {
           preferences={this.props.branch.get("preferences", new List())}
           errors={this.props.errors.get("preferences", new List())}
           variant_index={this.props.index}
-          onChange={value =>{this.handlePrefChange(value)}}
+          onChange={value => {
+            this.handlePrefChange(value);
+          }}
           handleErrorsChange={this.props.handleErrorsChange}
         />
-
       </React.Fragment>
     );
   }

@@ -10,7 +10,7 @@ import {
   PREF_TYPE_HELP,
   PREF_BRANCH_HELP,
 } from "experimenter/components/constants";
-import {PREF_VALUE_HELP} from "./constants";
+import { PREF_VALUE_HELP } from "./constants";
 
 @boundClass
 class Pref extends React.PureComponent {
@@ -46,7 +46,7 @@ class Pref extends React.PureComponent {
     );
   }
 
-  renderPrefBranch(){
+  renderPrefBranch() {
     return (
       <div>
         <DesignInput
@@ -56,8 +56,12 @@ class Pref extends React.PureComponent {
           onChange={value => {
             this.handleChange("pref_name", value);
           }}
-          value={this.props.preference? this.props.preference.get("pref_name"): null}
-          error={this.props.errors.get("pref_name",null)}
+          value={
+            this.props.preference
+              ? this.props.preference.get("pref_name")
+              : null
+          }
+          error={this.props.errors.get("pref_name", null)}
           helpContent={PREF_KEY_HELP}
         />
 
@@ -68,8 +72,12 @@ class Pref extends React.PureComponent {
           onChange={value => {
             this.handleChange("pref_type", value);
           }}
-          value={this.props.preference? this.props.preference.get("pref_type"): null}
-          error={this.props.errors.get("pref_type",null)}
+          value={
+            this.props.preference
+              ? this.props.preference.get("pref_type")
+              : null
+          }
+          error={this.props.errors.get("pref_type", null)}
           as="select"
           helpContent={PREF_TYPE_HELP}
         >
@@ -87,8 +95,12 @@ class Pref extends React.PureComponent {
           onChange={value => {
             this.handleChange("pref_branch", value);
           }}
-          value={this.props.preference? this.props.preference.get("pref_branch"): null}
-          error={this.props.errors.get("pref_branch",null)}
+          value={
+            this.props.preference
+              ? this.props.preference.get("pref_branch")
+              : null
+          }
+          error={this.props.errors.get("pref_branch", null)}
           as="select"
           helpContent={PREF_BRANCH_HELP}
         >
@@ -103,8 +115,12 @@ class Pref extends React.PureComponent {
           onChange={value => {
             this.handleChange("pref_value", value);
           }}
-          value={this.props.preference? this.props.preference.get("pref_value"): null}
-          error={this.props.errors.get("pref_value",null)}
+          value={
+            this.props.preference
+              ? this.props.preference.get("pref_value")
+              : null
+          }
+          error={this.props.errors.get("pref_value", null)}
           helpContent={PREF_VALUE_HELP}
         />
       </div>

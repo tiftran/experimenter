@@ -400,7 +400,9 @@ class TestExperimentRecipeMultiPrefVariantSerialzer(TestCase):
         variant = ExperimentVariant(
             slug="control", ratio=25, experiment=experiment, value='{"some": "json"}'
         )
-        serializer = ExperimentRecipeMultiPrefVariantSerializer(variant, context={"formatted":experiment.is_multi_pref_format})
+        serializer = ExperimentRecipeMultiPrefVariantSerializer(
+            variant, context={"formatted": experiment.is_multi_pref_format}
+        )
         expected_data = {
             "preferences": {
                 "browser.pref": {
@@ -659,17 +661,12 @@ class TestExperimentRecipeSerializer(TestCase):
             is_multi_pref_format=True,
         )
 
-
-
-        variant = ExperimentVariant(
-            slug="slug-value", ratio=25, experiment=experiment
-        )
+        variant = ExperimentVariant(slug="slug-value", ratio=25, experiment=experiment)
 
         variant.save()
 
         pref = VariantPreferencesFactory.create(variant=variant)
 
-   
         expected_comment = "Platform: All Windows\n{}".format(experiment.client_matching)
         serializer = ExperimentRecipeSerializer(experiment)
         self.assertEqual(serializer.data["action_name"], "multi-preference-experiment")
@@ -789,6 +786,21 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
             "pref_type": "boolean",
         }
 
+        self.pref3 = {
+            "pref_name": "pref name 3",
+            "pref_value": "{\"jsonField\": \"jsonValue\"}",
+            "pref_branch": "default",
+            "pref_type": "json string",
+        }
+
+        self.pref4 = {
+            "pref_name": "pref name 4",
+            "pref_value": "88",
+            "pref_branch": "default",
+            "pref_type": "integer",
+        }
+
+
         self.control_variant = {
             "description": "control description",
             "ratio": 50,
@@ -802,7 +814,7 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
             "ratio": 50,
             "is_control": False,
             "name": " branch 1",
-            "preferences": [self.pref1, self.pref2],
+            "preferences": [self.pref1, self.pref2, self.pref3, self.pref4],
         }
 
         self.experiment = ExperimentFactory.create(type=ExperimentConstants.TYPE_PREF)
@@ -839,7 +851,9 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
         serializer = ExperimentDesignMultiPrefSerializer(
             instance=self.experiment, data=data
         )
+
         self.assertTrue(serializer.is_valid())
+
         experiment = serializer.save()
         self.assertTrue(experiment.variants.all().count(), 2)
 
@@ -847,7 +861,7 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
         branch1 = ExperimentVariant.objects.get(experiment=experiment, is_control=False)
 
         self.assertEqual(control.preferences.all().count(), 2)
-        self.assertEqual(branch1.preferences.all().count(), 2)
+        self.assertEqual(branch1.preferences.all().count(), 4)
 
     def test_serailizer_reject_duplicate_pref_name_in_branch(self):
         self.pref1["pref_name"] = self.pref2["pref_name"]
@@ -859,6 +873,42 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
         self.assertFalse(serializer.is_valid())
         error_string = str(serializer.errors)
         self.assertIn("Pref name per Branch needs to be unique", error_string)
+
+    def test_serailizer_reject_mismatch_type_value_integer(self):
+        self.pref1["pref_type"] = Experiment.PREF_TYPE_INT
+        self.pref1["pref_value"] = "some random string"
+        data = {"variants": [self.control_variant]}
+
+        serializer = ExperimentDesignMultiPrefSerializer(
+            instance=self.experiment, data=data
+        )
+        self.assertFalse(serializer.is_valid())
+        error_string = str(serializer.errors)
+        self.assertIn("The pref value must be an integer", error_string)
+
+    def test_serailizer_reject_mismatch_type_value_bool(self):
+        self.pref1["pref_type"] = Experiment.PREF_TYPE_BOOL
+        self.pref1["pref_value"] = "some random string"
+        data = {"variants": [self.control_variant]}
+
+        serializer = ExperimentDesignMultiPrefSerializer(
+            instance=self.experiment, data=data
+        )
+        self.assertFalse(serializer.is_valid())
+        error_string = str(serializer.errors)
+        self.assertIn("The pref value must be a boolean", error_string)
+
+    def test_serailizer_reject_mismatch_type_value_json_string(self):
+        self.pref1["pref_type"] = Experiment.PREF_TYPE_JSON_STR
+        self.pref1["pref_value"] = "some random string"
+        data = {"variants": [self.control_variant]}
+
+        serializer = ExperimentDesignMultiPrefSerializer(
+            instance=self.experiment, data=data
+        )
+        self.assertFalse(serializer.is_valid())
+        error_string = str(serializer.errors)
+        self.assertIn("The pref value must be valid JSON", error_string)
 
     def test_serializer_rejects_missing_preference_fields(self):
         self.pref1.pop("pref_name")
@@ -875,8 +925,76 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
 
         self.assertIn("This field is required", error_string)
 
+    def test_serializer_removes_preferences(self):
+        variant = ExperimentVariantFactory.create(experiment=self.experiment)
+        variant_pref = VariantPreferencesFactory.create(variant=variant)
+        self.control_variant["id"] = variant.id
+        self.control_variant["ratio"] = 100
+
+        self.assertEqual(variant.preferences.all().count(), 1)
+        self.assertTrue(variant.preferences.get(id=variant_pref.id))
+
+        data = {"variants": [self.control_variant]}
+        serializer = ExperimentDesignMultiPrefSerializer(
+            instance=self.experiment, data=data
+        )
+        self.assertTrue(serializer.is_valid())
+
+        serializer.save()
+
+        variant = ExperimentVariant.objects.get(id=variant.id)
+
+        self.assertEqual(variant.preferences.all().count(), 2)
+
+        self.assertEqual(variant.preferences.filter(id=variant_pref.id).count(), 0)
+
+    def test_serializer_updates_existing_variant_pref(self):
+        variant = ExperimentVariantFactory.create(experiment=self.experiment)
+        variant_pref = VariantPreferencesFactory.create(variant=variant)
+        self.pref1["id"] = variant_pref.id
+        self.control_variant["id"] = variant.id
+        self.control_variant["ratio"] = 100
+
+        self.assertEqual(variant.preferences.all().count(), 1)
+        self.assertTrue(variant.preferences.get(id=variant_pref.id))
+
+        data = {"variants": [self.control_variant]}
+        serializer = ExperimentDesignMultiPrefSerializer(
+            instance=self.experiment, data=data
+        )
+        self.assertTrue(serializer.is_valid())
+
+        serializer.save()
+
+        variant = ExperimentVariant.objects.get(id=variant.id)
+
+        self.assertEqual(variant.preferences.all().count(), 2)
+
+        self.assertEqual(variant.preferences.filter(id=variant_pref.id).count(), 1)
+
 
 class TestExperimentDesignBranchMultiPrefSerializer(TestCase):
+
+    def setUp(self):
+        self.pref1 = {
+            "pref_name": "pref1",
+            "pref_value": "pref 1 value",
+            "pref_branch": "default",
+            "pref_type": "string",
+        }
+        self.pref2 = {
+            "pref_name": "pref2",
+            "pref_value": "pref 2 value",
+            "pref_branch": "default",
+            "pref_type": "string",
+        }
+        self.variant = {
+            "ratio": 100,
+            "is_control": True,
+            "name": "control",
+            "description": "control description",
+            "preferences": [self.pref1, self.pref2],
+        }
 
     def test_serializer_outputs_expected_schema(self):
         variant = ExperimentVariantFactory.create()
