@@ -3,11 +3,7 @@ from decimal import Decimal
 
 from django.test import TestCase
 
-from experimenter.experiments.models import (
-    Experiment,
-    ExperimentVariant,
-    VariantPreferences,
-)
+from experimenter.experiments.models import Experiment, ExperimentVariant
 from experimenter.experiments.tests.factories import (
     LocaleFactory,
     CountryFactory,
