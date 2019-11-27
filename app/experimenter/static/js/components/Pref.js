@@ -45,6 +45,9 @@ class Branch extends React.PureComponent {
                         label="Pref Name"
                         name="pref_key"
                         id="id_pref_key"
+                        onChange={value => {
+                            this.handleChange("pref_name", value);
+                        }}
                         value={this.props.preference? this.props.preference.get("pref_name"): null}
                         error={"hi"}
                         helpContent={
@@ -69,7 +72,7 @@ class Branch extends React.PureComponent {
                         name="pref_type"
                         id="id_pref_type"
                         onChange={value => {
-                            this.props.onChange("pref_type", value);
+                            this.handleChange("pref_type", value);
                         }}
                         value={this.props.preference? this.props.preference.get("pref_type"): null}
                         error={"klsjl"}
@@ -98,7 +101,7 @@ class Branch extends React.PureComponent {
                         name="pref_branch"
                         id="id_pref_branch"
                         onChange={value => {
-                            this.props.onChange("pref_branch", value);
+                            this.handleChange("pref_branch", value);
                         }}
                         value={this.props.preference? this.props.preference.get("pref_branch"): null}
                         error={"this"}

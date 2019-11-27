@@ -14,7 +14,7 @@ class PrefManager extends React.PureComponent {
         onChange: PropTypes.func
     };
 
-    handleChange(index, value){
+    handlePrefChange(index, value){
         const{
             preferences,
             onChange,
@@ -41,10 +41,11 @@ class PrefManager extends React.PureComponent {
             onChange,
             handleErrorsChange,
         } = this.props;
-        let pref = preferences.toJS();
-        const spliced_preference = fromJS(pref);
+        //let pref = preferences.toJS();
+        //pref.splice(index,1)
+        //const spliced_preference = fromJS(pref);
 
-        onChange(spliced_preference);
+        onChange(preferences.delete(index));
         //handleErrorsChange("preferences", errors.delete(index));
     }
 
@@ -57,12 +58,13 @@ class PrefManager extends React.PureComponent {
                index={index}
                preference={preference}
                remove={this.removePref}
-               onChange={(value)=>this.handleChange(index, value)}
+               onChange={(value)=>this.handlePrefChange(index, value)}
            />
         );
     }
 
     render() {
+
         const { preferences } = this.props;
 
             return (

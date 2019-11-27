@@ -1,5 +1,5 @@
 import { boundClass } from "autobind-decorator";
-import { Map } from "immutable";
+import { Map, List } from "immutable";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -119,7 +119,7 @@ class MultiPrefBranchFields extends React.PureComponent {
                 {this.renderField("name", "Name")}
                 {this.renderField("description", "Description")}
                 <PrefManager
-                    preferences={this.props.branch.get("preferences")}
+                    preferences={this.props.branch.get("preferences")||new List()}
                     errors={this.props.errors.get("variants")}
                     variant_index={this.props.index}
                     onChange={value => {this.handlePrefChange(value);}}
