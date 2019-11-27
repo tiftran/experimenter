@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { List, Map } from "immutable";
-import { Row, Col } from "react-bootstrap";
+import {List, Map} from "immutable";
+import {Row, Col} from "react-bootstrap";
 
 import BranchManager from "experimenter/components/BranchManager";
 import DesignInput from "experimenter/components/DesignInput";
 import PrefBranchFields from "experimenter/components/PrefBranchFields";
+import MultiPrefBranchFields from "experimenter/components/MultiPrefBranchFields";
 import {
   PREF_KEY_HELP,
   PREF_TYPE_HELP,
@@ -20,15 +21,9 @@ export default class PrefForm extends React.PureComponent {
     handleErrorsChange: PropTypes.func,
   };
 
-  render() {
-    return (
-      <div>
-        <Row className="mb-3">
-          <Col md={{ span: 4, offset: 3 }}>
-            <h4>Firefox Pref</h4>
-          </Col>
-        </Row>
-
+  renderSingularPrefInfo() {
+    if (this.props.type === "pref") {
+      return (<div>
         <DesignInput
           label="Pref Name"
           name="pref_key"
@@ -77,10 +72,29 @@ export default class PrefForm extends React.PureComponent {
           <option>user</option>
         </DesignInput>
 
-        <hr className="heavy-line my-5" />
+        <hr className="heavy-line my-5"/>
+      </div>)
+    }
+  }
 
+  render() {
+    let BranchFields;
+    if (this.props.data.type==="pref"){
+      BranchFields = PrefBranchFields
+    }
+    else{
+      BranchFields= MultiPrefBranchFields
+    }
+    return (
+      <div>
+        <Row className="mb-3">
+          <Col md={{span: 4, offset: 3}}>
+            <h4>Firefox Pref</h4>
+          </Col>
+        </Row>
+        {this.renderSingularPrefInfo()}
         <BranchManager
-          branchFieldsComponent={PrefBranchFields}
+          branchFieldsComponent={BranchFields}
           branches={this.props.data.get("variants", new List())}
           errors={this.props.errors.get("variants", new List())}
           handleDataChange={this.props.handleDataChange}
