@@ -11,6 +11,7 @@ class PrefManager extends React.PureComponent {
   static propTypes = {
     preferences: PropTypes.instanceOf(List),
     errors: PropTypes.instanceOf(List),
+    handleErrorsChange: PropTypes.func,
     onChange: PropTypes.func,
   };
 
@@ -21,7 +22,7 @@ class PrefManager extends React.PureComponent {
   }
 
   addPref() {
-    const { preferences, errors, onChange, handleErrorsChange } = this.props;
+    const { preferences, errors, onChange } = this.props;
     onChange(preferences.push(fromJS({})));
     this.handlePrefErrorsChange(errors.push(fromJS({})));
   }

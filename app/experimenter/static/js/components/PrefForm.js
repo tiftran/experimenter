@@ -16,6 +16,7 @@ import {
 export default class PrefForm extends React.PureComponent {
   static propTypes = {
     data: PropTypes.instanceOf(Map),
+    type: PropTypes.string,
     errors: PropTypes.instanceOf(Map),
     handleDataChange: PropTypes.func,
     handleErrorsChange: PropTypes.func,

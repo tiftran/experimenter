@@ -788,7 +788,7 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
 
         self.pref3 = {
             "pref_name": "pref name 3",
-            "pref_value": "{\"jsonField\": \"jsonValue\"}",
+            "pref_value": '{"jsonField": "jsonValue"}',
             "pref_branch": "default",
             "pref_type": "json string",
         }
@@ -799,7 +799,6 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
             "pref_branch": "default",
             "pref_type": "integer",
         }
-
 
         self.control_variant = {
             "description": "control description",
