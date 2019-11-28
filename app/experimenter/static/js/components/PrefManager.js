@@ -37,6 +37,7 @@ class PrefManager extends React.PureComponent {
     const { errors } = this.props;
 
     return (
+      <Col md={{ span: 9, offset: 2 }}>
       <Pref
         key={index}
         index={index}
@@ -45,6 +46,7 @@ class PrefManager extends React.PureComponent {
         remove={this.removePref}
         onChange={value => this.handlePrefChange(index, value)}
       />
+      </Col>
     );
   }
 

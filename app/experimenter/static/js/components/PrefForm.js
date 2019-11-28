@@ -3,6 +3,7 @@ import React from "react";
 import { List, Map } from "immutable";
 import { Row, Col } from "react-bootstrap";
 
+import RadioButton from "experimenter/components/RadioButton";
 import BranchManager from "experimenter/components/BranchManager";
 import DesignInput from "experimenter/components/DesignInput";
 import PrefBranchFields from "experimenter/components/PrefBranchFields";
@@ -91,7 +92,25 @@ export default class PrefForm extends React.PureComponent {
       <div>
         <Row className="mb-3">
           <Col md={{ span: 4, offset: 3 }}>
-            <h4>Firefox Pref</h4>
+            <h3>Firefox Pref</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 9, offset: 3 }}>
+            <RadioButton
+              elementLabel="How Many Prefs does this ship?"
+              fieldName="is_multi_pref"
+              radioLabel1="One Pref for all branches"
+              radioLabel2="Different Prefs per branch"
+              radioValue1="false"
+              radioValue2="true"
+              onChange={value =>
+                this.props.handleDataChange("is_multi_pref", value)
+              }
+              value={this.props.data.get("is_branched_addon")}
+            />
+            <hr className="heavy-line my-5" />
+
           </Col>
         </Row>
         {this.renderSingularPrefInfo()}

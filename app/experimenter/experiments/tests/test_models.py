@@ -1150,17 +1150,17 @@ class TestExperimentModel(TestCase):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="70.0"
         )
-        self.assertTrue(experiment.is_multi_pref_experiment)
+        self.assertTrue(experiment.is_multi_pref)
 
     def test_is_multi_pref_returns_false_for_pref_and_lower_version(self):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="66.0"
         )
-        self.assertFalse(experiment.is_multi_pref_experiment)
+        self.assertFalse(experiment.is_multi_pref)
 
     def test_is_multi_pref_returns_false_for_addon_type(self):
         experiment = ExperimentFactory(type=Experiment.TYPE_ADDON)
-        self.assertFalse(experiment.is_multi_pref_experiment)
+        self.assertFalse(experiment.is_multi_pref)
 
     def test_experiment_population_returns_correct_string(self):
         experiment = ExperimentFactory(
@@ -1278,13 +1278,6 @@ class TestVariantPreferences(TestCase):
         self.pref.pref_value = "true"
         self.pref.pref_branch = Experiment.PREF_BRANCH_DEFAULT
         self.pref.pref_name = "pref_name"
-
-    def test_mismatched_pref_type_and_value_is_invalid(self):
-
-        with self.assertRaises(ValidationError):
-
-            self.pref.pref_value = "6"
-            self.pref.save()
 
     def test_unique_pref_name_constraint_is_violated(self):
         self.pref.save()

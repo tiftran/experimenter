@@ -18,8 +18,9 @@ const branchesDiv = document.getElementById("react-branches-form");
 if (branchesDiv) {
   const slug = branchesDiv.dataset.experimentSlug;
   //const experimentType = branchesDiv.dataset.experimentType;
-  //const isBranchedAddon = branchesDiv.dataset.isBranchedAddon === "True";
+  //const isBranchedAddon = branchesDiv.dataset.isBranchedAddon === "False";
   //const experimentType = branchesDiv.dataset.experimentType;
+  const isBranchedAddon = false;
   const experimentType = "multi-pref";
 
   ReactDOM.render(

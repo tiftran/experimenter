@@ -30,7 +30,7 @@ class DesignForm extends React.PureComponent {
 
   isBranchedAddon() {
     return (
-      this.state.data.get("is_branched_addon") || this.props.isBranchedAddon
+      this.state.data.get("is_branched_addon",this.props.isBranchedAddon)
     );
   }
 

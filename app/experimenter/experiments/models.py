@@ -93,7 +93,7 @@ class Experiment(ExperimentConstants, models.Model):
         validators=[MaxValueValidator(ExperimentConstants.MAX_DURATION)],
     )
 
-    is_multi_pref_format = models.BooleanField(default=False)
+    use_multi_pref_serializer = models.BooleanField(default=False)
 
     addon_experiment_id = models.CharField(
         max_length=255, unique=True, blank=True, null=True
@@ -662,11 +662,12 @@ class Experiment(ExperimentConstants, models.Model):
         )
 
     @property
-    def is_multi_pref_experiment(self):
+    def is_multi_pref(self):
         return (
-            self.is_pref_experiment
+            (self.is_pref_experiment
             and self.firefox_min_version_integer
-            >= ExperimentConstants.FX_MIN_MULTI_BRANCHED_VERSION
+            >= ExperimentConstants.FX_MIN_MULTI_BRANCHED_VERSION)
+            or self.use_multi_pref_serializer
         )
 
     @property
@@ -824,14 +825,14 @@ class VariantPreferences(models.Model):
     pref_type = models.CharField(
         max_length=255,
         choices=ExperimentConstants.PREF_TYPE_CHOICES,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
     )
     pref_branch = models.CharField(
         max_length=255,
         choices=ExperimentConstants.PREF_BRANCH_CHOICES,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
     )
 
     pref_value = models.CharField(max_length=255, blank=False, null=False)
@@ -839,6 +840,7 @@ class VariantPreferences(models.Model):
     class Meta:
         unique_together = (("variant", "pref_name"),)
 
+    """
     def clean(self):
         super().clean()
         expected_type_mapping = expected_type = {
@@ -859,9 +861,9 @@ class VariantPreferences(models.Model):
                 raise ValidationError(
                     "value", f"Unexpected value type (should be {self.pref_type})"
                 )
-
+    """
     def save(self, *args, **kwargs):
-        self.clean()
+        super().clean()
 
         super().save()
 

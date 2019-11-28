@@ -250,7 +250,7 @@ class VariantPreferencesFactory(factory.django.DjangoModelFactory):
     pref_name = factory.LazyAttribute(lambda o: faker.catch_phrase())
     pref_type = "string"
     pref_branch = factory.LazyAttribute(
-        lambda o: random.choice(Experiment.PREF_BRANCH_CHOICES[0])
+        lambda o: random.choice(Experiment.PREF_BRANCH_CHOICES[1:])[0]
     )
     pref_value = factory.LazyAttribute(lambda o: faker.word())
 

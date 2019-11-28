@@ -39,13 +39,10 @@ from experimenter.experiments.serializers import (
     ExperimentDesignVariantBaseSerializer,
     ExperimentRecipeAddonVariantSerializer,
     ExperimentRecipeMultiPrefVariantSerializer,
-<<<<<<< HEAD
-=======
-    ExperimentDesignBranchBaseSerializer,
+    ExperimentDesignVariantBaseSerializer,
     ExperimentDesignBranchVariantPreferencesSerializer,
     ExperimentDesignMultiPrefSerializer,
     ExperimentDesignBranchMultiPrefSerializer,
->>>>>>> tests, api, recipe serializer
 )
 
 from experimenter.experiments.constants import ExperimentConstants
@@ -397,7 +394,7 @@ class TestExperimentRecipeMultiPrefVariantSerialzer(TestCase):
             slug="control", ratio=25, experiment=experiment, value='{"some": "json"}'
         )
         serializer = ExperimentRecipeMultiPrefVariantSerializer(
-            variant, context={"formatted": experiment.is_multi_pref_format}
+            variant, context={"formatted": experiment.use_multi_pref_serializer}
         )
         expected_data = {
             "preferences": {
@@ -654,7 +651,7 @@ class TestExperimentRecipeSerializer(TestCase):
             public_name="public name",
             normandy_slug="some-random-slug",
             platform=Experiment.PLATFORM_WINDOWS,
-            is_multi_pref_format=True,
+            use_multi_pref_serializer=True,
         )
 
         variant = ExperimentVariant(slug="slug-value", ratio=25, experiment=experiment)
@@ -994,7 +991,6 @@ class TestExperimentDesignBranchMultiPrefSerializer(TestCase):
     def test_serializer_outputs_expected_schema(self):
         variant = ExperimentVariantFactory.create()
         vp = VariantPreferencesFactory.create(variant=variant)
-
         serializer = ExperimentDesignBranchMultiPrefSerializer(variant)
 
         self.assertEqual(

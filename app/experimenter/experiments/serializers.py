@@ -408,7 +408,7 @@ class ExperimentRecipeMultiPrefArgumentsSerializer(
 
     def get_branches(self, obj):
         return ExperimentRecipeMultiPrefVariantSerializer(
-            obj.variants, many=True, context={"formatted": obj.is_multi_pref_format}
+            obj.variants, many=True, context={"formatted": obj.is_multi_pref}
         ).data
 
 
@@ -440,7 +440,7 @@ class ExperimentRecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_action_name(self, obj):
-        if obj.is_multi_pref_experiment or obj.is_multi_pref_format:
+        if obj.is_multi_pref:
             return "multi-preference-experiment"
         if obj.is_pref_experiment:
             return "preference-experiment"
@@ -465,7 +465,7 @@ class ExperimentRecipeSerializer(serializers.ModelSerializer):
         return filter_objects
 
     def get_arguments(self, obj):
-        if obj.is_multi_pref_experiment:
+        if obj.is_multi_pref:
             return ExperimentRecipeMultiPrefArgumentsSerializer(obj).data
         elif obj.is_pref_experiment:
             return ExperimentRecipePrefArgumentsSerializer(obj).data
@@ -575,7 +575,7 @@ class ExperimentDesignBranchVariantPreferencesSerializer(serializers.ModelSerial
         fields = ["id", "pref_name", "pref_type", "pref_branch", "pref_value"]
 
 
-class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignBranchBaseSerializer):
+class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignVariantBaseSerializer):
     preferences = ExperimentDesignBranchVariantPreferencesSerializer(many=True)
 
     class Meta:
