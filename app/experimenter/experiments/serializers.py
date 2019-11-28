@@ -408,7 +408,7 @@ class ExperimentRecipeMultiPrefArgumentsSerializer(
 
     def get_branches(self, obj):
         return ExperimentRecipeMultiPrefVariantSerializer(
-            obj.variants, many=True, context={"formatted": obj.is_multi_pref}
+            obj.variants, many=True, context={"formatted": obj.use_multi_pref_serializer}
         ).data
 
 
@@ -440,7 +440,7 @@ class ExperimentRecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_action_name(self, obj):
-        if obj.is_multi_pref:
+        if obj.use_multi_pref_serializer:
             return "multi-preference-experiment"
         if obj.is_pref_experiment:
             return "preference-experiment"
@@ -465,7 +465,7 @@ class ExperimentRecipeSerializer(serializers.ModelSerializer):
         return filter_objects
 
     def get_arguments(self, obj):
-        if obj.is_multi_pref:
+        if obj.use_multi_pref_serializer:
             return ExperimentRecipeMultiPrefArgumentsSerializer(obj).data
         elif obj.is_pref_experiment:
             return ExperimentRecipePrefArgumentsSerializer(obj).data
@@ -526,6 +526,10 @@ class VariantsListSerializer(serializers.ListSerializer):
             control_blank_variant["is_control"] = True
             control_blank_variant["ratio"] = 50
 
+            if "preferences" in initial_fields:
+                blank_variant["preferences"] = []
+                control_blank_variant["preferences"] = []
+
             data = [control_blank_variant, blank_variant]
 
         control_branch = [b for b in data if b["is_control"]][0]
@@ -578,7 +582,7 @@ class ExperimentDesignBranchVariantPreferencesSerializer(serializers.ModelSerial
 class ExperimentDesignBranchMultiPrefSerializer(ExperimentDesignVariantBaseSerializer):
     preferences = ExperimentDesignBranchVariantPreferencesSerializer(many=True)
 
-    class Meta:
+    class Meta(ExperimentDesignVariantBaseSerializer.Meta):
         fields = ["id", "description", "is_control", "name", "ratio", "preferences"]
         model = ExperimentVariant
 
@@ -712,15 +716,11 @@ class ExperimentDesignBaseSerializer(serializers.ModelSerializer):
 
 
 class ExperimentDesignMultiPrefSerializer(ExperimentDesignBaseSerializer):
-    type = serializers.SerializerMethodField()
     variants = ExperimentDesignBranchMultiPrefSerializer(many=True)
 
     class Meta:
         model = Experiment
-        fields = ("type", "variants")
-
-    def get_type(self, value):
-        return "multi-pref"
+        fields = ("variants",)
 
     def update(self, instance, validated_data):
         variant_preferences = [

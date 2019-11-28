@@ -38,14 +38,14 @@ class PrefManager extends React.PureComponent {
 
     return (
       <Col md={{ span: 9, offset: 2 }}>
-      <Pref
-        key={index}
-        index={index}
-        preference={preference}
-        errors={errors.get(index, new Map())}
-        remove={this.removePref}
-        onChange={value => this.handlePrefChange(index, value)}
-      />
+        <Pref
+          key={index}
+          index={index}
+          preference={preference}
+          errors={errors.get(index, new Map())}
+          remove={this.removePref}
+          onChange={value => this.handlePrefChange(index, value)}
+        />
       </Col>
     );
   }

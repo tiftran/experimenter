@@ -389,6 +389,7 @@ class TestExperimentRecipeMultiPrefVariantSerialzer(TestCase):
             pref_branch=Experiment.PREF_BRANCH_DEFAULT,
             pref_type=Experiment.PREF_TYPE_JSON_STR,
             pref_key="browser.pref",
+            firefox_min_version="55.0",
         )
         variant = ExperimentVariant(
             slug="control", ratio=25, experiment=experiment, value='{"some": "json"}'
@@ -651,10 +652,12 @@ class TestExperimentRecipeSerializer(TestCase):
             public_name="public name",
             normandy_slug="some-random-slug",
             platform=Experiment.PLATFORM_WINDOWS,
-            use_multi_pref_serializer=True,
+            is_multi_pref=True,
         )
 
-        variant = ExperimentVariant(slug="slug-value", ratio=25, experiment=experiment)
+        variant = ExperimentVariant(
+            slug="slug-value", ratio=25, experiment=experiment, is_control=True
+        )
 
         variant.save()
 
@@ -813,7 +816,7 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
 
     def test_serializer_outputs_expected_schema(self):
         experiment = ExperimentFactory.create()
-        variant = ExperimentVariantFactory.create(experiment=experiment)
+        variant = ExperimentVariantFactory.create(experiment=experiment, is_control=True)
         vp = VariantPreferencesFactory.create(variant=variant)
 
         serializer = ExperimentDesignMultiPrefSerializer(experiment)
@@ -963,6 +966,33 @@ class TestExperimentDesignMultiPrefSerializer(TestCase):
         self.assertEqual(variant.preferences.all().count(), 2)
 
         self.assertEqual(variant.preferences.filter(id=variant_pref.id).count(), 1)
+
+    def test_serializer_outputs_dummy_variants_when_no_variants(self):
+        experiment = ExperimentFactory.create(type=ExperimentConstants.TYPE_PREF)
+
+        serializer = ExperimentDesignMultiPrefSerializer(experiment)
+
+        self.assertEqual(
+            serializer.data,
+            {
+                "variants": [
+                    {
+                        "description": None,
+                        "is_control": True,
+                        "name": None,
+                        "ratio": 50,
+                        "preferences": [],
+                    },
+                    {
+                        "description": None,
+                        "is_control": False,
+                        "name": None,
+                        "ratio": 50,
+                        "preferences": [],
+                    },
+                ]
+            },
+        )
 
 
 class TestExperimentDesignBranchMultiPrefSerializer(TestCase):
@@ -1515,51 +1545,6 @@ class TestExperimentDesignPrefSerializer(TestCase):
                 ],
             },
         )
-
-
-class TestExperimentmkDesignMultiPrefSerializer(TestCase):
-
-    def setUp(self):
-        self.variant_1 = {
-            "name": "variant1",
-            "ratio": 50,
-            "description": "variant 1 desc",
-            "is_control": True,
-            "preferences": [
-                {
-                    "pref_name": "p1",
-                    "pref_branch": "default",
-                    "pref_value": "p1 value",
-                    "pref_type": "string",
-                },
-                {
-                    "pref_name": "p2",
-                    "pref_branch": "default",
-                    "pref_value": "p2 value",
-                    "pref_type": "string",
-                },
-            ],
-        }
-        self.variant_2 = {
-            "name": "variant2",
-            "ratio": 50,
-            "description": "variant 2 desc",
-            "is_control": True,
-            "preferences": [
-                {
-                    "pref_name": "p1",
-                    "pref_branch": "default",
-                    "pref_value": "p1 value",
-                    "pref_type": "string",
-                },
-                {
-                    "pref_name": "p3",
-                    "pref_branch": "default",
-                    "pref_value": "p3 value",
-                    "pref_type": "string",
-                },
-            ],
-        }
 
 
 class TestExperimentDesignAddonSerializer(TestCase):

@@ -93,7 +93,7 @@ class Experiment(ExperimentConstants, models.Model):
         validators=[MaxValueValidator(ExperimentConstants.MAX_DURATION)],
     )
 
-    use_multi_pref_serializer = models.BooleanField(default=False)
+    is_multi_pref = models.BooleanField(default=False)
 
     addon_experiment_id = models.CharField(
         max_length=255, unique=True, blank=True, null=True
@@ -662,13 +662,12 @@ class Experiment(ExperimentConstants, models.Model):
         )
 
     @property
-    def is_multi_pref(self):
+    def use_multi_pref_serializer(self):
         return (
-            (self.is_pref_experiment
+            self.is_pref_experiment
             and self.firefox_min_version_integer
-            >= ExperimentConstants.FX_MIN_MULTI_BRANCHED_VERSION)
-            or self.use_multi_pref_serializer
-        )
+            >= ExperimentConstants.FX_MIN_MULTI_BRANCHED_VERSION
+        ) or self.is_multi_pref
 
     @property
     def versions_integer_list(self):
@@ -862,6 +861,7 @@ class VariantPreferences(models.Model):
                     "value", f"Unexpected value type (should be {self.pref_type})"
                 )
     """
+
     def save(self, *args, **kwargs):
         super().clean()
 

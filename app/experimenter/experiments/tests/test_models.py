@@ -1150,17 +1150,17 @@ class TestExperimentModel(TestCase):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="70.0"
         )
-        self.assertTrue(experiment.is_multi_pref)
+        self.assertTrue(experiment.use_multi_pref_serializer)
 
     def test_is_multi_pref_returns_false_for_pref_and_lower_version(self):
         experiment = ExperimentFactory(
             type=Experiment.TYPE_PREF, firefox_min_version="66.0"
         )
-        self.assertFalse(experiment.is_multi_pref)
+        self.assertFalse(experiment.use_multi_pref_serializer)
 
     def test_is_multi_pref_returns_false_for_addon_type(self):
         experiment = ExperimentFactory(type=Experiment.TYPE_ADDON)
-        self.assertFalse(experiment.is_multi_pref)
+        self.assertFalse(experiment.use_multi_pref_serializer)
 
     def test_experiment_population_returns_correct_string(self):
         experiment = ExperimentFactory(

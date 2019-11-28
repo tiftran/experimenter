@@ -24,7 +24,7 @@ export default class PrefForm extends React.PureComponent {
   };
 
   renderSingularPrefInfo() {
-    if (this.props.type === "pref") {
+    if (!this.props.data.get("is_multi_pref")) {
       return (
         <div>
           <DesignInput
@@ -82,12 +82,6 @@ export default class PrefForm extends React.PureComponent {
   }
 
   render() {
-    let BranchFields;
-    if (this.props.data.type === "pref") {
-      BranchFields = PrefBranchFields;
-    } else {
-      BranchFields = MultiPrefBranchFields;
-    }
     return (
       <div>
         <Row className="mb-3">
@@ -107,15 +101,18 @@ export default class PrefForm extends React.PureComponent {
               onChange={value =>
                 this.props.handleDataChange("is_multi_pref", value)
               }
-              value={this.props.data.get("is_branched_addon")}
+              value={this.props.data.get("is_multi_pref")}
             />
             <hr className="heavy-line my-5" />
-
           </Col>
         </Row>
         {this.renderSingularPrefInfo()}
         <BranchManager
-          branchFieldsComponent={BranchFields}
+          branchFieldsComponent={
+            this.props.data.get("is_multi_pref")
+              ? MultiPrefBranchFields
+              : PrefBranchFields
+          }
           branches={this.props.data.get("variants", new List())}
           errors={this.props.errors.get("variants", new List())}
           handleDataChange={this.props.handleDataChange}

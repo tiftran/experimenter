@@ -270,7 +270,9 @@ class TestExperimentDesignMultiPrefView(TestCase):
     def setUp(self):
         self.user_email = "user@example.com"
         self.experiment = ExperimentFactory.create(type="pref")
-        self.variant = ExperimentVariantFactory.create(experiment=self.experiment)
+        self.variant = ExperimentVariantFactory.create(
+            experiment=self.experiment, is_control=True
+        )
         self.preference = VariantPreferencesFactory.create(variant=self.variant)
 
     def test_get_design_multi_pref_returns_design_info(self):
