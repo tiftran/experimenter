@@ -35,19 +35,18 @@ class Command(BaseCommand):
         schema = generator.get_schema()
         paths = schema["paths"]
         for path in paths:
-            if  "design" in path:
-                paths[path]["tags"] = "design"
-            else:
-                paths[path]["tags"] = "experiments"
-        
+            methods = paths[path]
+            for method in methods:
+                if  "design" in path:
+                    methods[method]["tags"] = ["design"]
+                else:
+                    methods[method]["tags"] = ["experiments"]
+            
         return json.dumps(schema, indent=2)
 
     @staticmethod
     def generate_docs(options):
 
-
-
-        #api_json = Command.read_json_doc()
         api_json = Command.generate_schema()
         docs_dir = os.path.join(settings.BASE_DIR, "docs")
         schema_json_path = os.path.join(docs_dir, "openapi-schema.json")

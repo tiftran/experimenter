@@ -59,9 +59,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "experiments"
+        },
+        "tags": [
+          "experiments"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/": {
       "get": {
@@ -458,9 +460,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "experiments"
+        },
+        "tags": [
+          "experiments"
+        ]
+      }
     },
     "/api/v1/experiments/": {
       "get": {
@@ -860,9 +864,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "experiments"
+        },
+        "tags": [
+          "experiments"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-addon": {
       "get": {
@@ -934,7 +940,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -1156,7 +1165,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -1363,9 +1375,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-pref": {
       "get": {
@@ -1449,7 +1463,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -1719,7 +1736,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -1968,9 +1988,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-multi-pref": {
       "get": {
@@ -2068,7 +2090,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -2394,7 +2419,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -2708,9 +2736,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-generic": {
       "get": {
@@ -2775,7 +2805,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -2969,7 +3002,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -3154,9 +3190,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-branched-addon": {
       "get": {
@@ -3228,7 +3266,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -3450,7 +3491,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -3660,9 +3704,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/design-rollout": {
       "get": {
@@ -3730,7 +3776,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "put": {
         "operationId": "UpdateExperiment",
@@ -3936,7 +3985,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "design"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -4133,9 +4185,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "design"
+        },
+        "tags": [
+          "design"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/intent-to-ship-email": {
       "put": {
@@ -5634,7 +5688,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "experiments"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -7090,9 +7147,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "experiments"
+        },
+        "tags": [
+          "experiments"
+        ]
+      }
     },
     "/api/v1/experiments/{slug}/clone": {
       "put": {
@@ -7175,7 +7234,10 @@
             },
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "experiments"
+        ]
       },
       "patch": {
         "operationId": "PartialUpdateExperiment",
@@ -7248,9 +7310,11 @@
             },
             "description": ""
           }
-        }
-      },
-      "tags": "experiments"
+        },
+        "tags": [
+          "experiments"
+        ]
+      }
     }
   }
 }
