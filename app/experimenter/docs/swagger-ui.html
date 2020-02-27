@@ -13,7 +13,7 @@
       const spec = {
   "openapi": "3.0.2",
   "info": {
-    "title": "",
+    "title": "Experimenter",
     "version": ""
   },
   "paths": {
@@ -72,7 +72,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "experiments"
     },
     "/api/v1/experiments/{slug}/": {
       "get": {
@@ -470,7 +471,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "experiments"
     },
     "/api/v1/experiments/": {
       "get": {
@@ -871,7 +873,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "experiments"
     },
     "/api/v1/experiments/{slug}/design-addon": {
       "get": {
@@ -1373,7 +1376,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/design-pref": {
       "get": {
@@ -1977,7 +1981,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/design-multi-pref": {
       "get": {
@@ -2716,7 +2721,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/design-generic": {
       "get": {
@@ -3161,7 +3167,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/design-branched-addon": {
       "get": {
@@ -3666,7 +3673,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/design-rollout": {
       "get": {
@@ -4138,7 +4146,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "design"
     },
     "/api/v1/experiments/{slug}/intent-to-ship-email": {
       "put": {
@@ -7094,7 +7103,8 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "experiments"
     },
     "/api/v1/experiments/{slug}/clone": {
       "put": {
@@ -7251,11 +7261,11 @@
             "description": ""
           }
         }
-      }
+      },
+      "tags": "experiments"
     }
   }
-}
-;
+};
       const ui = SwaggerUIBundle({
         spec: spec,
         dom_id: "#swagger-ui",
