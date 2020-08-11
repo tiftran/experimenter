@@ -137,18 +137,20 @@ const ExperimentDetails: React.FC = () => {
     ExperimentStatus.REJECTED,
   ].includes(experimentData.status);
 
+  let backButtonProps = {};
+
+  if (backButtonDisabled) {
+    backButtonProps = { variant: "secondary", disabled: true };
+  }
   let backButton = (
-    <Link to={`/${experimentData.slug}/edit/`}>
-      <Button>Back</Button>
+    <Link
+      to={`/${experimentData.slug}/edit/`}
+      component={Button}
+      {...backButtonProps}
+    >
+      Back
     </Link>
   );
-  if (backButtonDisabled) {
-    backButton = (
-      <Button disabled variant="secondary">
-        Back
-      </Button>
-    );
-  }
 
   const requestButtonDisabled =
     experimentData.status !== ExperimentStatus.DRAFT;
