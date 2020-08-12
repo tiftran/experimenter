@@ -16,6 +16,22 @@ from experimenter.bugzilla.tests.mixins import MockBugzillaTasksMixin
 
 NIMBUS_DATA = get_data()
 FIREFOX_VERSION = random.choice(Experiment.VERSION_CHOICES)[0]
+FAKE_VARIANTS = [
+    {
+        "slug": "control",
+        "name": "control",
+        "ratio": 50,
+        "description": "a variant",
+        "is_control": True,
+    },
+    {
+        "slug": "variant",
+        "name": "variant",
+        "ratio": 50,
+        "description": "a variant",
+        "is_control": False,
+    }
+]
 
 
 class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, TestCase):
@@ -55,6 +71,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
                 "slug": "rapid-experiment",
                 "recipe_slug": experiment.recipe_slug,
                 "status": Experiment.STATUS_DRAFT,
+                "variants": experiment.variants
             },
         )
 
@@ -96,6 +113,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
                 "slug": "rapid-experiment",
                 "recipe_slug": experiment.recipe_slug,
                 "status": Experiment.STATUS_LIVE,
+                "variants": experiment.variants
             },
         )
 
@@ -167,6 +185,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
                     "features",
                     "firefox_min_version",
                     "firefox_channel",
+                    "variants"
                 ]
             ),
         )
@@ -239,6 +258,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
             "features": ["picture_in_picture", "pinned_tabs"],
             "firefox_min_version": FIREFOX_VERSION,
             "firefox_channel": Experiment.CHANNEL_RELEASE,
+            "variants": FAKE_VARIANTS,
         }
 
         serializer = ExperimentRapidSerializer(
@@ -417,6 +437,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
             "features": ["picture_in_picture", "pinned_tabs"],
             "firefox_min_version": FIREFOX_VERSION,
             "firefox_channel": Experiment.CHANNEL_RELEASE,
+            "variants": FAKE_VARIANTS,
         }
 
         serializer = ExperimentRapidSerializer(
@@ -437,6 +458,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
             "features": ["picture_in_picture", "pinned_tabs"],
             "firefox_min_version": FIREFOX_VERSION,
             "firefox_channel": Experiment.CHANNEL_RELEASE,
+            "variants": FAKE_VARIANTS,
         }
 
         serializer = ExperimentRapidSerializer(
@@ -461,6 +483,7 @@ class TestExperimentRapidSerializer(MockRequestMixin, MockBugzillaTasksMixin, Te
             "features": ["picture_in_picture", "pinned_tabs"],
             "firefox_min_version": FIREFOX_VERSION,
             "firefox_channel": Experiment.CHANNEL_RELEASE,
+            "variants": FAKE_VARIANTS,
         }
 
         serializer = ExperimentRapidSerializer(
