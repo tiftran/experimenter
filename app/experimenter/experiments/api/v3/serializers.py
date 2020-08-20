@@ -44,15 +44,7 @@ class ExperimentRapidVariantSerializer(serializers.ModelSerializer):
         raise serializers.ValidationError(["Branch sizes must be between 1 and 100."])
 
     class Meta:
-        fields = [
-            "id",
-            "slug",
-            "name",
-            "description",
-            "is_control",
-            "ratio",
-            "value"
-        ]
+        fields = ["id", "slug", "name", "description", "is_control", "ratio", "value"]
         model = ExperimentVariant
 
 
@@ -107,7 +99,7 @@ class ExperimentRapidSerializer(
             "type",
             "reject_feedback",
             "recipe_slug",
-            "variants"
+            "variants",
         )
 
     def get_reject_feedback(self, obj):
@@ -190,7 +182,7 @@ class ExperimentRapidSerializer(
 
         instance = super().update(instance, validated_data)
 
-        self.update_changelog(instance, validated_data)
+        # self.update_changelog(instance, validated_data)
 
         return instance
 
