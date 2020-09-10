@@ -11,7 +11,11 @@ updates:
       interval: weekly
     target-branch: dependencies
   - package-ecosystem: pip
+<<<<<<< HEAD
     directory: "/app/experiments/tests/integration/"
+=======
+    directory: "/app/tests/"
+>>>>>>> e11b3e69... temp
     schedule:
       interval: weekly
     target-branch: dependencies
