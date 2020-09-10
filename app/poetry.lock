@@ -202,7 +202,7 @@ description = "The Datadog Python library"
 name = "datadog"
 optional = false
 python-versions = "*"
-version = "0.37.1"
+version = "0.39.0"
 
 [package.dependencies]
 decorator = ">=3.3.2"
@@ -1409,7 +1409,7 @@ docs = ["sphinx", "repoze.sphinx.autointerface"]
 test = ["zope.security", "zope.testrunner"]
 
 [metadata]
-content-hash = "acc3418935d23cf85316d4d595fd75f4d3162f723c1a50008aa7c4a2c0c8b445"
+content-hash = "06c45589ace2a81aff9e4b89f62d4fce7ed47a20ecaff74a25f9b2fbc7962fc6"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1511,8 +1511,8 @@ coverage = [
     {file = "coverage-5.2.1.tar.gz", hash = "sha256:a34cb28e0747ea15e82d13e14de606747e9e484fb28d63c999483f5d5188e89b"},
 ]
 datadog = [
-    {file = "datadog-0.37.1-py2.py3-none-any.whl", hash = "sha256:99f754b1bf3fd12d5132cab910e99d4905229a4adc2488021764ad119a1af73b"},
-    {file = "datadog-0.37.1.tar.gz", hash = "sha256:564cce4d07f80008a5530418a8bbb4b6d3a7f160be3659456b6a69f66788ae56"},
+    {file = "datadog-0.39.0-py2.py3-none-any.whl", hash = "sha256:b6a42e3e99f704f0a9065e5659e82f11a931c771fc2b119795e86c836f6c5e14"},
+    {file = "datadog-0.39.0.tar.gz", hash = "sha256:b0ef69a27aad0e4412c1ac3e6894fa1b5741db735515c34dfe1606d8cf30e4e5"},
 ]
 decorator = [
     {file = "decorator-4.4.2-py2.py3-none-any.whl", hash = "sha256:41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760"},
