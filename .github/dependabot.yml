@@ -1,17 +1,22 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/app/experimenter/static/rapid"
-  schedule:
-    interval: weekly
-  target-branch: dependencies
-- package-ecosystem: npm
-  directory: "/app/experimenter/static/core"
-  schedule:
-    interval: weekly
-  target-branch: dependencies
-- package-ecosystem: pip
-  directory: "/app/requirements"
-  schedule:
-    interval: weekly
-  target-branch: dependencies
+  - package-ecosystem: npm
+    directory: "/app/experimenter/static/rapid"
+    schedule:
+      interval: weekly
+    target-branch: dependencies
+  - package-ecosystem: npm
+    directory: "/app/experimenter/static/core"
+    schedule:
+      interval: weekly
+    target-branch: dependencies
+  - package-ecosystem: pip
+    directory: "/app/tests/integrations/requirements"
+    schedule:
+      interval: weekly
+    target-branch: dependencies
+  - package-ecosystem: pip
+    directory: "/app"
+    schedule:
+      interval: weekly
+    target-branch: dependencies
