@@ -11,7 +11,7 @@ updates:
       interval: weekly
     target-branch: dependencies
   - package-ecosystem: pip
-    directory: "/app/tests/integration/requirements"
+    directory: "/app/experiments/tests/integration/"
     schedule:
       interval: weekly
     target-branch: dependencies
