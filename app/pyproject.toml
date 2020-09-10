@@ -54,7 +54,7 @@ mozilla-nimbus-shared = "0.0.9"
 
 [tool.poetry.dev-dependencies]
 # integration test dependencies
-pytest-base-url = "1.4.1"
+pytest-base-url = "1.4.2"
 pytest-selenium = "1.17.0"
 PyPOM = "2.2.0"
 pytest = "6.0.1"
